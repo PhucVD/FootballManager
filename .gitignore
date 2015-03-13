@@ -1,3 +1,10 @@
+packages
+FootballManager.Data/bin
+FootballManager.Data/obj
+
+FootballManager/obj
+FootballManager/bin
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
