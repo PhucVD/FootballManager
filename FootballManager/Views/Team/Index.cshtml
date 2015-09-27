@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FootballManager.Data.Models.Team>
+﻿@model IEnumerable<FootballManager.Domain.Team>
 
 @{
     ViewBag.Title = "Index";
@@ -12,10 +12,13 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Nation.NationName)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.TeamName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nation)
+            @Html.DisplayNameFor(model => model.TeamType)
         </th>
         <th></th>
     </tr>
@@ -23,10 +26,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.Nation.NationName)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.TeamName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Nation)
+            @Html.DisplayFor(modelItem => item.TeamType)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TeamId }) |

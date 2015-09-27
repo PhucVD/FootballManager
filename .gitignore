@@ -1,9 +1,7 @@
 packages
-FootballManager.Data/bin
-FootballManager.Data/obj
 
-FootballManager/obj
-FootballManager/bin
+bin/
+obj/
 
 # Windows image file caches
 Thumbs.db

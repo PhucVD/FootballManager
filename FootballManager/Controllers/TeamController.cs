@@ -1,24 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using FootballManager.Data;
-using FootballManager.Data.Models;
+using FootballManager.Domain;
+using FootballManager.Service;
 
 namespace FootballManager.Controllers
 {
     public class TeamController : Controller
     {
-        private FootballContext db = new FootballContext();
+        private readonly TeamService _teamService = new TeamService();
 
         // GET: Team
         public ActionResult Index()
         {
-            return View(db.Teams.ToList());
+            return View(_teamService.GetAll());
         }
 
         // GET: Team/Details/5
@@ -28,7 +23,7 @@ namespace FootballManager.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Team team = db.Teams.Find(id);
+            Team team = _teamService.GetById(id.Value);
             if (team == null)
             {
                 return HttpNotFound();
@@ -39,6 +34,9 @@ namespace FootballManager.Controllers
         // GET: Team/Create
         public ActionResult Create()
         {
+            var nationService = new NationService();
+            var nationList = new SelectList(nationService.GetAll(), "NationId", "NationName");
+            ViewBag.NationList = nationList;
             return View();
         }
 
@@ -51,8 +49,7 @@ namespace FootballManager.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Teams.Add(team);
-                db.SaveChanges();
+                _teamService.Insert(team);
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +63,7 @@ namespace FootballManager.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Team team = db.Teams.Find(id);
+            Team team = _teamService.GetById(id.Value);
             if (team == null)
             {
                 return HttpNotFound();
@@ -83,8 +80,7 @@ namespace FootballManager.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(team).State = EntityState.Modified;
-                db.SaveChanges();
+                _teamService.Update(team);
                 return RedirectToAction("Index");
             }
             return View(team);
@@ -97,7 +93,7 @@ namespace FootballManager.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Team team = db.Teams.Find(id);
+            Team team = _teamService.GetById(id.Value);
             if (team == null)
             {
                 return HttpNotFound();
@@ -110,19 +106,8 @@ namespace FootballManager.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Team team = db.Teams.Find(id);
-            db.Teams.Remove(team);
-            db.SaveChanges();
+            _teamService.DeleteById(id);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

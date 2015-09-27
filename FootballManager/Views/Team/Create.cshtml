@@ -1,4 +1,4 @@
-﻿@model FootballManager.Data.Models.Team
+﻿@model FootballManager.Domain.Team
 
 @{
     ViewBag.Title = "Create";
@@ -24,10 +24,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Nation, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TeamType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Nation, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nation, "", new { @class = "text-danger" })
+                @Html.EnumDropDownListFor(model => model.TeamType, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TeamType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NationId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.NationId, (SelectList)ViewBag.NationList, "--Select Nation--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NationId, "", new { @class = "text-danger" })
             </div>
         </div>
 

@@ -1,4 +1,4 @@
-﻿@model FootballManager.Data.Models.Team
+﻿@model FootballManager.Domain.Team
 
 @{
     ViewBag.Title = "Details";
@@ -11,6 +11,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Nation.NationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nation.NationName)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.TeamName)
         </dt>
 
@@ -19,11 +27,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Nation)
+            @Html.DisplayNameFor(model => model.TeamType)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nation)
+            @Html.DisplayFor(model => model.TeamType)
         </dd>
 
     </dl>

@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballManager", "FootballManager\FootballManager.csproj", "{36DC4021-1615-4673-B039-CB53A7956BF0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballManager.Data", "FootballManager.Data\FootballManager.Data.csproj", "{CF419D0F-52C4-47FD-91B3-67823D58E41B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballManager.Domain", "FootballManager.Domain\FootballManager.Domain.csproj", "{B441BD5B-6BC4-4062-90A7-4D6EA5AD6D90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballManager.Service", "FootballManager.Service\FootballManager.Service.csproj", "{B1F05D96-093F-4537-9F80-A43EAAC7FACD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballManager.Common", "FootballManager.Common\FootballManager.Common.csproj", "{BDC538DF-689D-4870-8DDB-0D6A994C3B34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{CF419D0F-52C4-47FD-91B3-67823D58E41B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF419D0F-52C4-47FD-91B3-67823D58E41B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF419D0F-52C4-47FD-91B3-67823D58E41B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B441BD5B-6BC4-4062-90A7-4D6EA5AD6D90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B441BD5B-6BC4-4062-90A7-4D6EA5AD6D90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B441BD5B-6BC4-4062-90A7-4D6EA5AD6D90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B441BD5B-6BC4-4062-90A7-4D6EA5AD6D90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1F05D96-093F-4537-9F80-A43EAAC7FACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1F05D96-093F-4537-9F80-A43EAAC7FACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1F05D96-093F-4537-9F80-A43EAAC7FACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1F05D96-093F-4537-9F80-A43EAAC7FACD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDC538DF-689D-4870-8DDB-0D6A994C3B34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC538DF-689D-4870-8DDB-0D6A994C3B34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC538DF-689D-4870-8DDB-0D6A994C3B34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC538DF-689D-4870-8DDB-0D6A994C3B34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
