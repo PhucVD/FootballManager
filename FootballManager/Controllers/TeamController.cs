@@ -8,7 +8,13 @@ namespace FootballManager.Controllers
 {
     public class TeamController : Controller
     {
-        private readonly TeamService _teamService = new TeamService();
+        //private readonly IBaseService<Team> _teamService = new TeamService_();
+        private readonly ITeamService _teamService;
+
+        public TeamController(ITeamService service)
+        {
+            this._teamService = service;
+        }
 
         // GET: Team
         public ActionResult Index()
@@ -34,10 +40,15 @@ namespace FootballManager.Controllers
         // GET: Team/Create
         public ActionResult Create()
         {
+            GetNationList();
+            return View();
+        }
+
+        private void GetNationList()
+        {
             var nationService = new NationService();
             var nationList = new SelectList(nationService.GetAll(), "NationId", "NationName");
             ViewBag.NationList = nationList;
-            return View();
         }
 
         // POST: Team/Create
@@ -45,7 +56,7 @@ namespace FootballManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TeamId,TeamName,Nation")] Team team)
+        public ActionResult Create(Team team)
         {
             if (ModelState.IsValid)
             {
@@ -68,6 +79,7 @@ namespace FootballManager.Controllers
             {
                 return HttpNotFound();
             }
+            GetNationList();
             return View(team);
         }
 

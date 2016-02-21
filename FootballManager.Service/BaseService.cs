@@ -8,7 +8,7 @@ using FootballManager.Data.UnitOfWorks;
 
 namespace FootballManager.Service
 {
-    public abstract class BaseService<T>: IDataService<T> 
+    public abstract class BaseService<T>: IBaseService<T> 
         where T: class
     {
         protected IRepository<T> repository;
