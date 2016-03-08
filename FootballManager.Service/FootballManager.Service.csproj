@@ -44,9 +44,9 @@
   <ItemGroup>
     <Compile Include="BaseService.cs" />
     <Compile Include="NationService.cs" />
+    <Compile Include="PlayerService.cs" />
     <Compile Include="TeamService.cs" />
-    <Compile Include="TeamService_.cs" />
-    <Compile Include="IDataService.cs" />
+    <Compile Include="IBaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

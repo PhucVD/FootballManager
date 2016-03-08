@@ -1,4 +1,5 @@
 using System;
+using FootballManager.Domain;
 using FootballManager.Service;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
@@ -36,8 +37,9 @@ namespace FootballManager.App_Start
             // NOTE: To load from web.config uncomment the line below. Make sure to add a Microsoft.Practices.Unity.Configuration to the using statements.
             // container.LoadConfiguration();
 
-            // TODO: Register your types here
-            container.RegisterType<ITeamService, TeamService>();
+            container.RegisterType(typeof(IBaseService<>), typeof(BaseService<>));
+            container.RegisterType(typeof(IBaseService<Team>), typeof(TeamService));
+            container.RegisterType(typeof(IBaseService<Player>), typeof(PlayerService));
 
             //container.RegisterInstance()
         }

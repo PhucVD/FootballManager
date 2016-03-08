@@ -28,26 +28,30 @@ namespace FootballManager.Service
         public virtual void Insert(T model)
         {
             repository.Insert(model);
+            this.Save();
         }
 
         public virtual void Update(T model)
         {
             repository.Update(model);
+            this.Save();
         }
 
         public virtual void Delete(T model)
         {
             repository.Delete(model);
+            this.Save();
         }
 
         public virtual void DeleteById(int id)
         {
             repository.DeleteById(id);
+            this.Save();
         }
 
         public virtual IEnumerable<T> GetAll()
         {
-            return repository.GetAll().AsEnumerable();
+            return repository.GetAll().ToList();
         }
 
         public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> filter)
