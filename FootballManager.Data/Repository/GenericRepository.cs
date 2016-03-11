@@ -10,7 +10,7 @@ namespace FootballManager.Data.Repository
     {
         #region Fields
 
-        protected DbContext context;
+        protected IFootballContext context;
         protected DbSet<TEntity> dbSet;
 
         #endregion

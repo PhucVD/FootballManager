@@ -6,13 +6,13 @@ namespace FootballManager.Data.UnitOfWorks
 {
     public class UnitOfWork: IUnitOfWork, IDisposable
     {
-        private FootballContext context;
+        private IFootballContext context;
 
-        public DbContext GetDbContext() => context ?? new FootballContext();
+        public IFootballContext GetDbContext() => context;
 
-        public UnitOfWork()
+        public UnitOfWork(IFootballContext _context)
         {
-            context = new FootballContext();
+            context = _context;
         }
 
         public int Commit()

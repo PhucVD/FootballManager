@@ -4,12 +4,11 @@ using FootballManager.Domain;
 
 namespace FootballManager.Data
 {
-    public class FootballContext : DbContext
+    public class FootballContext : DbContext, IFootballContext
     {
         public FootballContext()
             : base("FootballContext")
         {
-
         }
 
         public DbSet<Team> Teams { get; set; }

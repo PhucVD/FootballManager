@@ -9,7 +9,7 @@ namespace FootballManager.Data.UnitOfWorks
 {
     public interface IUnitOfWork
     {
-        DbContext GetDbContext();
+        IFootballContext GetDbContext();
 
         /// <summary>
         /// Saves all pending changes

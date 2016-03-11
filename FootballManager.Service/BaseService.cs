@@ -8,62 +8,62 @@ using FootballManager.Data.UnitOfWorks;
 
 namespace FootballManager.Service
 {
-    public abstract class BaseService<T>: IBaseService<T> 
+    public class BaseService<T>: IBaseService<T> 
         where T: class
     {
-        protected IRepository<T> repository;
-        protected IUnitOfWork unitOfWork;
+        protected IRepository<T> _repository;
+        protected IUnitOfWork _unitOfWork;
 
-        public BaseService()
+        public BaseService(IUnitOfWork unitOfWork)
         {
-            this.unitOfWork = new UnitOfWork();
-            this.repository = new GenericRepository<T>(this.unitOfWork); 
+            this._unitOfWork = unitOfWork;
+            this._repository = new GenericRepository<T>(this._unitOfWork); 
         }
 
         public virtual T GetById(int id)
         {
-            return repository.GetById(id);
+            return _repository.GetById(id);
         }
 
         public virtual void Insert(T model)
         {
-            repository.Insert(model);
+            _repository.Insert(model);
             this.Save();
         }
 
         public virtual void Update(T model)
         {
-            repository.Update(model);
+            _repository.Update(model);
             this.Save();
         }
 
         public virtual void Delete(T model)
         {
-            repository.Delete(model);
+            _repository.Delete(model);
             this.Save();
         }
 
         public virtual void DeleteById(int id)
         {
-            repository.DeleteById(id);
+            _repository.DeleteById(id);
             this.Save();
         }
 
         public virtual IEnumerable<T> GetAll()
         {
-            return repository.GetAll().ToList();
+            return _repository.GetAll().ToList();
         }
 
         public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> filter)
         {
-            return repository.GetMany(filter).AsEnumerable();
+            return _repository.GetMany(filter).AsEnumerable();
         }
 
         public int Save()
         {
             try
             {
-                return unitOfWork.Commit();
+                return _unitOfWork.Commit();
             }
             catch (Exception ex)
             {
