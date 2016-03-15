@@ -38,7 +38,7 @@ namespace FootballManager.App_Start
             // container.LoadConfiguration();
 
             container.RegisterType(typeof(IBaseService<>), typeof(BaseService<>));
-            container.RegisterType(typeof(IBaseService<Team>), typeof(TeamService));
+            container.RegisterType(typeof(ITeamService), typeof(TeamService));
             container.RegisterType(typeof(IBaseService<Player>), typeof(PlayerService));
 
             //container.RegisterInstance()

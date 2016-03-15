@@ -8,10 +8,10 @@ namespace FootballManager.Controllers
 {
     public class TeamController : Controller
     {
-        private readonly IBaseService<Team> _service;
-        //private readonly ITeamService _service;
+        //private readonly IBaseService<Team> _service;
+        private readonly ITeamService _service;
 
-        public TeamController(IBaseService<Team> service)
+        public TeamController(ITeamService service)
         {
             this._service = service;
         }
