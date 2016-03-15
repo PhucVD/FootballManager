@@ -9,11 +9,11 @@ namespace UnitTesting.RepositoryTest
     [TestClass]
     public class TeamRepositoryTest : BaseTestClass
     {
-        private IRepository<Team> _teamRepo;
+        private TeamRepository _teamRepo;
 
         public TeamRepositoryTest()
         {
-            _teamRepo = (GenericRepository<Team>)UnityContainer.Resolve(typeof(IRepository<Team>));
+            _teamRepo = (TeamRepository)UnityContainer.Resolve(typeof(ITeamRepository));
         }
 
         [TestMethod]
@@ -23,8 +23,6 @@ namespace UnitTesting.RepositoryTest
             var name = "Italy";
 
             var team = _teamRepo.GetById(id);
-
-            var test = _teamRepo.GetAll();
 
             Assert.AreEqual(name, team.TeamName);
         }

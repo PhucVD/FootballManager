@@ -40,9 +40,10 @@ namespace UnitTesting
             // container.LoadConfiguration();
             container.RegisterType(typeof(IFootballContext), typeof(FakeFootballContext));
             container.RegisterType(typeof(IRepository<>), typeof(GenericRepository<>));
+            container.RegisterType(typeof(ITeamRepository), typeof(TeamRepository));
             container.RegisterType(typeof(IBaseService<>), typeof(BaseService<>));
             container.RegisterType(typeof(IUnitOfWork), typeof(UnitOfWork));
-            container.RegisterType(typeof(IBaseService<Team>), typeof(TeamService));
+            container.RegisterType(typeof(ITeamService), typeof(TeamService));
             container.RegisterType(typeof(IBaseService<Player>), typeof(PlayerService));
 
             //container.RegisterInstance()

@@ -9,7 +9,7 @@ namespace UnitTesting
     {
         public FakeFootballContext() : base("FakeFootballContext")
         {
-            
+
         }
 
         public DbSet<Team> Teams { get; set; }
