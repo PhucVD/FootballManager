@@ -87,6 +87,10 @@
     <Compile Include="UnityConfig.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FootballManager.Common\FootballManager.Common.csproj">
+      <Project>{BDC538DF-689D-4870-8DDB-0D6A994C3B34}</Project>
+      <Name>FootballManager.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FootballManager.Data\FootballManager.Data.csproj">
       <Project>{CF419D0F-52C4-47FD-91B3-67823D58E41B}</Project>
       <Name>FootballManager.Data</Name>

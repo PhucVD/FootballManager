@@ -1,10 +1,10 @@
 using System;
 using FootballManager.Data;
+using FootballManager.Data.Repository;
 using FootballManager.Data.UnitOfWorks;
 using FootballManager.Domain;
 using FootballManager.Service;
 using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.Configuration;
 
 namespace FootballManager.App_Start
 {
@@ -39,10 +39,14 @@ namespace FootballManager.App_Start
             // NOTE: To load from web.config uncomment the line below. Make sure to add a Microsoft.Practices.Unity.Configuration to the using statements.
             // container.LoadConfiguration();
             container.RegisterType(typeof(IFootballContext), typeof(FootballContext));
+            container.RegisterType(typeof(IRepository<>), typeof(GenericRepository<>));
+            container.RegisterType(typeof(ITeamRepository), typeof(TeamRepository));
             container.RegisterType(typeof(IBaseService<>), typeof(BaseService<>));
             container.RegisterType(typeof(IUnitOfWork), typeof(UnitOfWork));
-            container.RegisterType(typeof(IBaseService<Team>), typeof(TeamService));
+            container.RegisterType(typeof(ITeamService), typeof(TeamService));
             container.RegisterType(typeof(IBaseService<Player>), typeof(PlayerService));
+            container.RegisterType(typeof(INationService), typeof(NationService));
+
 
             //container.RegisterInstance()
         }

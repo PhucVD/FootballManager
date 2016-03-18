@@ -1,4 +1,5 @@
 using System.Globalization;
+using FootballManager.Common.Enums;
 using FootballManager.Domain;
 
 namespace FootballManager.Data.Migrations

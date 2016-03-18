@@ -47,6 +47,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Team.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FootballManager.Common\FootballManager.Common.csproj">
+      <Project>{bdc538df-689d-4870-8ddb-0d6a994c3b34}</Project>
+      <Name>FootballManager.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

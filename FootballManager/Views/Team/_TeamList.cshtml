@@ -1,0 +1,42 @@
+﻿
+<h2>Index</h2>
+
+<div>
+    <p>
+        <a href="#/Team/Edit/">Create New</a>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Team Name
+            </th>
+            <th>
+                Team Type
+            </th>
+            <th>
+                Nation Name
+            </th>
+            <th>Actions</th>
+        </tr>
+
+        <tbody ng-repeat="team in TeamList">
+            <tr>
+                <td>
+                    {{team.TeamName}}
+                </td>
+                <td>
+                    {{team.TeamType}}
+                </td>
+                <td>
+                    {{team.NationName}}
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a href="#/Team/Edit/{{team.TeamId}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                    </div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

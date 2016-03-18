@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using FootballManager.Common.Enums;
 
 namespace FootballManager.Domain
 {
@@ -10,15 +11,5 @@ namespace FootballManager.Domain
         public string NationName { get; set; }
 
         public Continent Continent { get; set; }
-    }
-    
-    public enum Continent
-    {
-        Asia = 1,
-        Africa,
-        Europe,
-        SouthAmerican,
-        NorthAmerican,
-        Oceania
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using FootballManager.Data.Repository;
+using FootballManager.Common.Classes;
+using FootballManager.Common.Enums;
+using FootballManager.Common.Interfaces;
 using FootballManager.Data.UnitOfWorks;
 using FootballManager.Domain;
 
@@ -22,6 +24,16 @@ namespace FootballManager.Service
             return this._repository.GetMany(x => x.TeamType == TeamType.Club);
         }
 
+        public IEnumerable<TeamViewModel> GetAllTeamViewModel()
+        {
+            return this.GetAll().Select(AutoMapper.Mapper.Map<TeamViewModel>);
+        }
+
+        public TeamViewModel GetTeamViewModelById(int id)
+        {
+            return AutoMapper.Mapper.Map<TeamViewModel>(this.GetById(id));
+        }
+
         public TeamService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
@@ -30,5 +42,7 @@ namespace FootballManager.Service
     public interface ITeamService : IBaseService<Team>
     {
         IEnumerable<Team> GetClubsOnly();
+        IEnumerable<TeamViewModel> GetAllTeamViewModel();
+        TeamViewModel GetTeamViewModelById(int id);
     }
 }

@@ -84,6 +84,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FootballManager.Common\FootballManager.Common.csproj">
+      <Project>{BDC538DF-689D-4870-8DDB-0D6A994C3B34}</Project>
+      <Name>FootballManager.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FootballManager.Domain\FootballManager.Domain.csproj">
       <Project>{b441bd5b-6bc4-4062-90a7-4d6ea5ad6d90}</Project>
       <Name>FootballManager.Domain</Name>
