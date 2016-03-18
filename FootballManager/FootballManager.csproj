@@ -238,6 +238,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Team\Index.cshtml" />
     <Content Include="Views\Team\Details.cshtml" />
+    <Content Include="Views\Shared\_Message.cshtml" />
     <None Include="Views\Team\Create.cshtml" />
     <Content Include="Views\Team\Edit.cshtml" />
     <Content Include="Views\Player\Index.cshtml" />
