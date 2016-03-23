@@ -1,52 +1,54 @@
-﻿<h2>Create</h2>
+﻿<div>
+    <h2>Create</h2>
 
-<form novalidate class="form-horizontal" name="form" ng-submit="form.$valid &&  save()">
-    <h4>Team</h4>
-    <hr />
-    <div class="form-group">
-        <label class="control-label col-md-2">Team Name</label>
-        <div class="col-md-10">
-            <input class="form-control"
-                   ng-model="Team.TeamName"
-                   name="TeamName"
-                   ng-required="true" 
-                   ng-minlength="2" ng-maxlength="50"/>
-            <span class="text-danger" ng-show="form.TeamName.$error.minlength">Min length is 2</span>
-            <span class="text-danger" ng-show="form.TeamName.$error.maxlength">Max length is 50</span>
+    <form novalidate class="form-horizontal" name="form" ng-submit="form.$valid &&  save()">
+        <h4>Team</h4>
+        <hr />
+        <div class="form-group">
+            <label class="control-label col-md-2">Team Name</label>
+            <div class="col-md-10">
+                <input class="form-control"
+                       ng-model="Team.TeamName"
+                       name="TeamName"
+                       ng-required="true"
+                       ng-minlength="2" ng-maxlength="50" />
+                <span class="text-danger" ng-show="form.TeamName.$error.minlength">Min length is 2</span>
+                <span class="text-danger" ng-show="form.TeamName.$error.maxlength">Max length is 50</span>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="control-label col-md-2">Team Type</label>
-        <div class="col-md-10">
-            <select class="form-control" name="TeamType"
-                    ng-required="true"
-                    ng-init="Team.TeamType = TeamTypeList[0].Id"
-                    ng-options="item.Id as item.Label for item in TeamTypeList"
-                    ng-model="Team.TeamType"></select>
-            <span class="text-danger" ng-show="form.TeamType.$error.required">Team Type is required</span>
+        <div class="form-group">
+            <label class="control-label col-md-2">Team Type</label>
+            <div class="col-md-10">
+                <select class="form-control" name="TeamType"
+                        ng-required="true"
+                        ng-init="Team.TeamType = TeamTypeList[0].Id"
+                        ng-options="item.Id as item.Label for item in TeamTypeList"
+                        ng-model="Team.TeamType"></select>
+                <span class="text-danger" ng-show="form.TeamType.$error.required">Team Type is required</span>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="control-label col-md-2">Nation</label>
-        <div class="col-md-10">
-            <select class="form-control" name="Nation"
-                    ng-required="true"
-                    ng-init="Team.NationId = NationList[id].NationId"
-                    ng-options="item.NationId as (item.NationName + ' - ' + item.ContinentString) for item in NationList" 
-                    ng-model="Team.NationId"></select>
-            <span class="text-danger" ng-show="form.Nation.$error.required">Team Type is required</span>
+        <div class="form-group">
+            <label class="control-label col-md-2">Nation</label>
+            <div class="col-md-10">
+                <select class="form-control" name="Nation"
+                        ng-required="true"
+                        ng-init="Team.NationId = NationList[id].NationId"
+                        ng-options="item.NationId as (item.NationName + ' - ' + item.ContinentString) for item in NationList"
+                        ng-model="Team.NationId"></select>
+                <span class="text-danger" ng-show="form.Nation.$error.required">Team Type is required</span>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="submit" class="btn btn-default">Save</button>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-default">Save</button>
+            </div>
         </div>
-    </div>
-</form>
+    </form>
 
-<a href="#/Team" class="btn btn-default">
-    <i class="fa fa-arrow-left"></i>
-</a>
+    <a href="#/Team" class="btn btn-default">
+        <i class="fa fa-arrow-left"></i>
+    </a>
+</div>

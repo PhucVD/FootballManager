@@ -26,6 +26,7 @@ namespace FootballManager
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                       "~/Scripts/angular.js",
                       "~/Scripts/angular-route.js",
+                      "~/Scripts/angular-animate.js",
                       "~/Scripts/AngularModules/NationManage.js",
                       "~/Scripts/AngularModules/TeamManage.js"));
 

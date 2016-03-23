@@ -1,4 +1,4 @@
-﻿var teamManageModule = angular.module('teamManageModule', ['ngRoute', 'nationManageModule']);
+﻿var teamManageModule = angular.module('teamManageModule', ['ngRoute', 'ngAnimate', 'nationManageModule']);
 
 var indexController = teamManageModule.controller('indexCtrl', ["$scope", "$http", "teamAjaxCallFactory", function ($scope, $http, teamAjaxCallFactory) {
     $scope.TeamList = [];
