@@ -8,12 +8,13 @@ namespace FootballManager.Controllers
 {
     public class TeamController : Controller
     {
-        //private readonly IBaseService<Team> _service;
         private readonly ITeamService _service;
+        private readonly IBaseService<Nation> _nationService;
 
-        public TeamController(ITeamService service)
+        public TeamController(ITeamService service, IBaseService<Nation> nationService)
         {
             this._service = service;
+            this._nationService = nationService;
         }
 
         // GET: Team
@@ -46,8 +47,7 @@ namespace FootballManager.Controllers
 
         private void GetSelectList()
         {
-            var nationService = new NationService();
-            var nationList = new SelectList(nationService.GetAll(), "NationId", "NationName");
+            var nationList = new SelectList(_nationService.GetAll(), "NationId", "NationName");
             ViewBag.NationList = nationList;
         }
 

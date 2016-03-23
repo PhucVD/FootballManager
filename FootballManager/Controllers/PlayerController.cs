@@ -11,16 +11,20 @@ namespace FootballManager.Controllers
 {
     public class PlayerController : Controller
     {
-        private readonly IBaseService<Player> _service;
+        private readonly IBaseService<Player> _playerService;
+        private readonly IBaseService<Nation> _nationService;
+        private readonly ITeamService _teamService;
 
-        public PlayerController(IBaseService<Player> service)
+        public PlayerController(IBaseService<Player> playerService, IBaseService<Nation> nationService, ITeamService teamService)
         {
-            this._service = service;
+            this._playerService = playerService;
+            this._nationService = nationService;
+            this._teamService = teamService;
         }
 
         public ActionResult Index()
         {
-            return View(_service.GetAll());
+            return View(_playerService.GetAll());
         }
 
         public ActionResult Details(int? id)
@@ -29,7 +33,7 @@ namespace FootballManager.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = _service.GetById(id.Value);
+            Player player = _playerService.GetById(id.Value);
             if (player == null)
             {
                 return HttpNotFound();
@@ -45,11 +49,8 @@ namespace FootballManager.Controllers
 
         private void GetSelectList()
         {
-            var nationService = new NationService();
-            ViewBag.NationList = new SelectList(nationService.GetAll(), "NationId", "NationName");
-
-            var teamService = new TeamService();
-            ViewBag.TeamList = new SelectList(teamService.GetClubsOnly(), "TeamId", "TeamName");
+            ViewBag.NationList = new SelectList(_nationService.GetAll(), "NationId", "NationName");
+            ViewBag.TeamList = new SelectList(_teamService.GetClubsOnly(), "TeamId", "TeamName");
         }
 
         [HttpPost]
@@ -58,7 +59,7 @@ namespace FootballManager.Controllers
         {
             if (ModelState.IsValid)
             {
-                _service.Insert(player);
+                _playerService.Insert(player);
                 return RedirectToAction("Index");
             }
 
@@ -71,7 +72,7 @@ namespace FootballManager.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = _service.GetById(id.Value);
+            Player player = _playerService.GetById(id.Value);
             if (player == null)
             {
                 return HttpNotFound();
@@ -87,7 +88,7 @@ namespace FootballManager.Controllers
         {
             if (ModelState.IsValid)
             {
-                _service.Update(player);
+                _playerService.Update(player);
                 return RedirectToAction("Index");
             }
             return View(player);
@@ -99,10 +100,10 @@ namespace FootballManager.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = _service.GetById(id.Value);
+            Player player = _playerService.GetById(id.Value);
             if (player != null)
             {
-                _service.DeleteById(id.Value);
+                _playerService.DeleteById(id.Value);
             }
             return HttpNotFound();
         }
@@ -111,7 +112,7 @@ namespace FootballManager.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            _service.DeleteById(id);
+            _playerService.DeleteById(id);
             return RedirectToAction("Index");
         }
     }

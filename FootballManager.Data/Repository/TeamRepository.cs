@@ -7,7 +7,7 @@ using FootballManager.Domain;
 
 namespace FootballManager.Data.Repository
 {
-    public class TeamRepository: GenericRepository<Team>
+    public class TeamRepository: GenericRepository<Team>, ITeamRepository
     {
         public TeamRepository(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
@@ -18,5 +18,10 @@ namespace FootballManager.Data.Repository
         {
             return dbSet.Include(p => p.Nation);
         }
+    }
+
+    public interface ITeamRepository : IRepository<Team>
+    {
+        
     }
 }

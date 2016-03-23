@@ -8,7 +8,7 @@ namespace FootballManager.Data.UnitOfWorks
     {
         private FootballContext context;
 
-        public DbContext GetDbContext() => context ?? new FootballContext();
+        public DbContext GetDbContext() => context ?? (context = new FootballContext());
 
         public UnitOfWork()
         {

@@ -14,10 +14,10 @@ namespace FootballManager.Service
         protected IRepository<T> repository;
         protected IUnitOfWork unitOfWork;
 
-        public BaseService()
+        public BaseService(IUnitOfWork unitOfWork, IRepository<T> repository)
         {
-            this.unitOfWork = new UnitOfWork();
-            this.repository = new GenericRepository<T>(this.unitOfWork); 
+            this.unitOfWork = unitOfWork;
+            this.repository = repository; 
         }
 
         public virtual T GetById(int id)
