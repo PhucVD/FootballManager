@@ -8,19 +8,19 @@ namespace FootballManager.Controllers
 {
     public class TeamController : Controller
     {
-        private readonly ITeamService _service;
+        private readonly ITeamService _teamService;
         private readonly IBaseService<Nation> _nationService;
 
-        public TeamController(ITeamService service, IBaseService<Nation> nationService)
+        public TeamController(ITeamService teamService, IBaseService<Nation> nationService)
         {
-            this._service = service;
+            this._teamService = teamService;
             this._nationService = nationService;
         }
 
         // GET: Team
         public ActionResult Index()
         {
-            return View(_service.GetAll());
+            return View(_teamService.GetAll());
         }
 
         // GET: Team/Details/5
@@ -30,7 +30,7 @@ namespace FootballManager.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Team team = _service.GetById(id.Value);
+            Team team = _teamService.GetById(id.Value);
             if (team == null)
             {
                 return HttpNotFound();
@@ -58,7 +58,7 @@ namespace FootballManager.Controllers
         {
             if (ModelState.IsValid)
             {
-                _service.Insert(team);
+                _teamService.Insert(team);
                 return RedirectToAction("Index");
             }
 
@@ -72,7 +72,7 @@ namespace FootballManager.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Team team = _service.GetById(id.Value);
+            Team team = _teamService.GetById(id.Value);
             if (team == null)
             {
                 return HttpNotFound();
@@ -87,7 +87,7 @@ namespace FootballManager.Controllers
         {
             if (ModelState.IsValid)
             {
-                _service.Update(team);
+                _teamService.Update(team);
                 return RedirectToAction("Index");
             }
             return View(team);
@@ -100,10 +100,10 @@ namespace FootballManager.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Team team = _service.GetById(id.Value);
+            Team team = _teamService.GetById(id.Value);
             if (team != null)
             {
-                _service.DeleteById(id.Value);
+                _teamService.DeleteById(id.Value);
             }
             return HttpNotFound();
         }
@@ -113,7 +113,7 @@ namespace FootballManager.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            _service.DeleteById(id);
+            _teamService.DeleteById(id);
             return RedirectToAction("Index");
         }
     }
