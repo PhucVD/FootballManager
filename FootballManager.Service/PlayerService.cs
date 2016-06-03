@@ -1,6 +1,6 @@
-﻿using FootballManager.Data.Repository;
-using FootballManager.Data.UnitOfWorks;
-using FootballManager.Domain;
+﻿using FootballManager.Domain;
+using FootballManager.Repository.Repositories;
+using FootballManager.Repository.UnitOfWorks;
 
 namespace FootballManager.Service
 {

@@ -1,7 +1,7 @@
 using System;
-using FootballManager.Data.Repository;
-using FootballManager.Data.UnitOfWorks;
 using FootballManager.Domain;
+using FootballManager.Repository.Repositories;
+using FootballManager.Repository.UnitOfWorks;
 using FootballManager.Service;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;

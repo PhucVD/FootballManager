@@ -1,4 +1,4 @@
-namespace FootballManager.Data.Migrations
+namespace FootballManager.Repository.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

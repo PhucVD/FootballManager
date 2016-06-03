@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
-using FootballManager.Data.UnitOfWorks;
 using FootballManager.Domain;
+using FootballManager.Repository.UnitOfWorks;
 
-namespace FootballManager.Data.Repository
+namespace FootballManager.Repository.Repositories
 {
     public class TeamRepository: GenericRepository<Team>, ITeamRepository
     {

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using FootballManager.Common;
-using FootballManager.Data.Repository;
-using FootballManager.Data.UnitOfWorks;
+using FootballManager.Repository.Repositories;
+using FootballManager.Repository.UnitOfWorks;
 
 namespace FootballManager.Service
 {
@@ -28,25 +28,21 @@ namespace FootballManager.Service
         public virtual void Insert(T model)
         {
             repository.Insert(model);
-            this.Save();
         }
 
         public virtual void Update(T model)
         {
             repository.Update(model);
-            this.Save();
         }
 
         public virtual void Delete(T model)
         {
             repository.Delete(model);
-            this.Save();
         }
 
         public virtual void DeleteById(int id)
         {
             repository.DeleteById(id);
-            this.Save();
         }
 
         public virtual IEnumerable<T> GetAll()

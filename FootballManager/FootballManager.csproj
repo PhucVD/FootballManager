@@ -215,9 +215,9 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FootballManager.Data\FootballManager.Data.csproj">
+    <ProjectReference Include="..\FootballManager.Data\FootballManager.Repository.csproj">
       <Project>{cf419d0f-52c4-47fd-91b3-67823d58e41b}</Project>
-      <Name>FootballManager.Data</Name>
+      <Name>FootballManager.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\FootballManager.Domain\FootballManager.Domain.csproj">
       <Project>{b441bd5b-6bc4-4062-90a7-4d6ea5ad6d90}</Project>

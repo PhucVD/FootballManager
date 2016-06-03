@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Data.Entity;
-using FootballManager.Data.Repository;
+using FootballManager.Data;
 
-namespace FootballManager.Data.UnitOfWorks
+
+namespace FootballManager.Repository.UnitOfWorks
 {
     public class UnitOfWork: IUnitOfWork, IDisposable
     {

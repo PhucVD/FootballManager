@@ -2,16 +2,16 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using FootballManager.Data.UnitOfWorks;
+using FootballManager.Repository.UnitOfWorks;
 
-namespace FootballManager.Data.Repository
+namespace FootballManager.Repository.Repositories
 {
     public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         #region Fields
 
-        protected DbContext context;
-        protected DbSet<TEntity> dbSet;
+        private readonly DbContext _context;
+        protected readonly DbSet<TEntity> dbSet;
 
         #endregion
 
@@ -19,8 +19,8 @@ namespace FootballManager.Data.Repository
 
         public GenericRepository(IUnitOfWork unitOfWork)
         {
-            this.context = unitOfWork.GetDbContext();
-            this.dbSet = context.Set<TEntity>();
+            this._context = unitOfWork.GetDbContext();
+            this.dbSet = _context.Set<TEntity>();
         }
 
         #endregion
@@ -34,16 +34,16 @@ namespace FootballManager.Data.Repository
 
         public virtual void Update(TEntity entity)
         {
-            if (context.Entry(entity).State == EntityState.Detached)
+            if (_context.Entry(entity).State == EntityState.Detached)
             {
                 dbSet.Attach(entity);
             }
-            context.Entry(entity).State = EntityState.Modified;
+            _context.Entry(entity).State = EntityState.Modified;
         }
 
         public virtual void Delete(TEntity entity)
         {
-            if (context.Entry(entity).State == EntityState.Detached)
+            if (_context.Entry(entity).State == EntityState.Detached)
             {
                 dbSet.Attach(entity);
             }
@@ -74,7 +74,7 @@ namespace FootballManager.Data.Repository
 
         public virtual int ExecuteCommand(string sql)
         {
-            int numRowsAffected = context.Database.ExecuteSqlCommand(sql);
+            int numRowsAffected = _context.Database.ExecuteSqlCommand(sql);
             return numRowsAffected;
         }
 

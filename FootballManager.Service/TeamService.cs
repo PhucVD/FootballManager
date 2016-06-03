@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using FootballManager.Data.Repository;
-using FootballManager.Data.UnitOfWorks;
 using FootballManager.Domain;
+using FootballManager.Repository.Repositories;
+using FootballManager.Repository.UnitOfWorks;
 
 namespace FootballManager.Service
 {
@@ -23,5 +23,6 @@ namespace FootballManager.Service
     public interface ITeamService : IBaseService<Team>
     {
         IEnumerable<Team> GetClubsOnly();
+
     }
 }

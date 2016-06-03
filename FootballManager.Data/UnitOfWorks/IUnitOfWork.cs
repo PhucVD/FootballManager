@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FootballManager.Data.UnitOfWorks
+namespace FootballManager.Repository.UnitOfWorks
 {
     public interface IUnitOfWork
     {

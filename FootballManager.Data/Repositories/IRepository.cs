@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace FootballManager.Data.Repository
+namespace FootballManager.Repository.Repositories
 {
     public interface IRepository<T> where T: class
     {
