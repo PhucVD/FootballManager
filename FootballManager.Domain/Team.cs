@@ -21,9 +21,4 @@ namespace FootballManager.Domain
         public virtual ICollection<Player> Players { get; set; }
     }
 
-    public enum TeamType
-    {
-        Nation = 1,
-        Club
-    }
 }

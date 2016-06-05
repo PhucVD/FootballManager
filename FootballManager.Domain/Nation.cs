@@ -11,14 +11,5 @@ namespace FootballManager.Domain
 
         public Continent Continent { get; set; }
     }
-    
-    public enum Continent
-    {
-        Asia = 1,
-        Africa,
-        Europe,
-        SouthAmerican,
-        NorthAmerican,
-        Oceania
-    }
+
 }

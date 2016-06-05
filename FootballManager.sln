@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballManager", "FootballManager\FootballManager.csproj", "{36DC4021-1615-4673-B039-CB53A7956BF0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballManager.Web", "FootballManager.Web\FootballManager.Web.csproj", "{36DC4021-1615-4673-B039-CB53A7956BF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballManager.Repository", "FootballManager.Data\FootballManager.Repository.csproj", "{CF419D0F-52C4-47FD-91B3-67823D58E41B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballManager.Repository", "FootballManager.Repository\FootballManager.Repository.csproj", "{CF419D0F-52C4-47FD-91B3-67823D58E41B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballManager.Domain", "FootballManager.Domain\FootballManager.Domain.csproj", "{B441BD5B-6BC4-4062-90A7-4D6EA5AD6D90}"
 EndProject

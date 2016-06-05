@@ -27,5 +27,7 @@ namespace FootballManager.Service
 
         IEnumerable<T> GetMany(Expression<Func<T, bool>> filter);
 
+        int Save();
+
     }
 }

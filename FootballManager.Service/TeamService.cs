@@ -6,23 +6,17 @@ using FootballManager.Repository.UnitOfWorks;
 
 namespace FootballManager.Service
 {
-    public class TeamService: BaseService<Team>, ITeamService
+    public class TournamentService : BaseService<Tournament>, ITournamentService
     {
-        public TeamService(IUnitOfWork unitOfWork, ITeamRepository repository) : base(unitOfWork, repository)
+        public TournamentService(IUnitOfWork unitOfWork, IRepository<Tournament> repository) : base(unitOfWork, repository)
         {
 
         }
-
-        public IEnumerable<Team> GetClubsOnly()
-        {
-            return this.repository.GetMany(x => x.TeamType == TeamType.Club);
-        } 
         
     }
 
-    public interface ITeamService : IBaseService<Team>
+    public interface ITournamentService : IBaseService<Tournament>
     {
-        IEnumerable<Team> GetClubsOnly();
 
     }
 }

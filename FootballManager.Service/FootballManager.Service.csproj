@@ -45,6 +45,7 @@
     <Compile Include="BaseService.cs" />
     <Compile Include="NationService.cs" />
     <Compile Include="PlayerService.cs" />
+    <Compile Include="TournamentService.cs" />
     <Compile Include="TeamService.cs" />
     <Compile Include="IBaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,7 +55,7 @@
       <Project>{bdc538df-689d-4870-8ddb-0d6a994c3b34}</Project>
       <Name>FootballManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FootballManager.Data\FootballManager.Repository.csproj">
+    <ProjectReference Include="..\FootballManager.Repository\FootballManager.Repository.csproj">
       <Project>{cf419d0f-52c4-47fd-91b3-67823d58e41b}</Project>
       <Name>FootballManager.Repository</Name>
     </ProjectReference>
