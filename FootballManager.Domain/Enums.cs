@@ -40,6 +40,7 @@ namespace FootballManager.Domain
 
     public enum MatchResultType
     {
+        NotDefined,
         FirstTeamWin,
         Draw,
         SecondTeamWin

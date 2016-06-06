@@ -25,14 +25,12 @@ namespace FootballManager.Repository.Migrations
                 .Index(t => t.HostNationId);
             
             AddColumn("dbo.Match", "MatchStatus", c => c.Int(nullable: false));
-            AddColumn("dbo.Match", "ResultType", c => c.Int(nullable: false));
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.Tournament", "HostNationId", "dbo.Nation");
             DropIndex("dbo.Tournament", new[] { "HostNationId" });
-            DropColumn("dbo.Match", "ResultType");
             DropColumn("dbo.Match", "MatchStatus");
             DropTable("dbo.Tournament");
         }
