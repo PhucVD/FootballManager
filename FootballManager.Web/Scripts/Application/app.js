@@ -1,12 +1,12 @@
 ﻿$(function() {
-    $("body").on("show.bs.modal", "#standardModal", function () {
+    $(".modal").on("show.bs.modal", function () {
+        // Load modal
         var url = $(".btn-modal").data("url");
         $(".modal-content").load(url);
     });
-
-    $("#standardModal").on("click", "#btnSave", function () {
-        //console.log("save data");
-        //$(".form-modal").submit();
+    $(".modal").on("shown.bs.modal", function () {
+        // Enable modal validation
+        $.validator.unobtrusive.parse($(this));
     });
 });
 
