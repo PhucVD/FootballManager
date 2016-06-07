@@ -7,7 +7,15 @@
     $(".modal").on("shown.bs.modal", function () {
         // Enable modal validation
         $.validator.unobtrusive.parse($(this));
+
+        // Init datetime picker
+        if ($('.dtpicker').length > 0) {
+            $('.dtpicker').datetimepicker({
+                format: 'DD/MM/YYYY'
+            });
+        }
     });
+
 });
 
 function onSuccessModal() {
