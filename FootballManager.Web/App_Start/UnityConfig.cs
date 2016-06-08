@@ -40,7 +40,7 @@ namespace FootballManager.Web.App_Start
         {
             container.RegisterType(typeof(IBaseService<>), typeof(BaseService<>));
             container.RegisterType(typeof (IBaseService<Player>), typeof(PlayerService));
-            container.RegisterType(typeof(IBaseService<Nation>), typeof(NationService));
+            container.RegisterType(typeof(IBaseService<Country>), typeof(CountryService));
             container.RegisterType<ITeamService, TeamService>();
             container.RegisterType<ITournamentService, TournamentService>();
 

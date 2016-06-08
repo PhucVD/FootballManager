@@ -13,21 +13,25 @@ namespace FootballManager.Domain
 
         public DateTime MatchDate { get; set; }
 
-        [Column("FirstTeamId")]
+        public int FirstTeamId { get; set; }
+
+        [ForeignKey("FirstTeamId")]
         public Team FirstTeam { get; set; }
 
-        [Column("SecondTeamId")]
+        public int SecondTeamId { get; set; }
+
+        [ForeignKey("SecondTeamId")]
         public Team SecondTeam { get; set; }
 
-        public int FirstTeamScore { get; set; }
+        public int? FirstTeamScore { get; set; }
 
-        public int SecondTeamScore { get; set; }
+        public int? SecondTeamScore { get; set; }
 
         public string Score => $"{FirstTeamScore} - {SecondTeamScore}";
 
-        public ProgressStatus MatchStatus { get; set; }
+        public ProgressStatus? MatchStatus { get; set; }
 
-        public MatchResultType ResultType { get; set; }
+        public MatchResultType? ResultType { get; set; }
 
     }
 

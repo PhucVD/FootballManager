@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.TeamType)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nation.NationName)
+            @Html.DisplayNameFor(model => model.Country.CountryName)
         </th>
         <th></th>
     </tr>
@@ -32,7 +32,7 @@
             @Html.DisplayFor(modelItem => item.TeamType)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Nation.NationName)
+            @Html.DisplayFor(modelItem => item.Country.CountryName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TeamId }) |

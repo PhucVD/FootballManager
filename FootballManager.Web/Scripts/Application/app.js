@@ -9,11 +9,18 @@
         $.validator.unobtrusive.parse($(this));
 
         // Init datetime picker
-        if ($('.dtpicker').length > 0) {
-            $('.dtpicker').datetimepicker({
+        if ($('.datetime-picker').length > 0) {
+            $('.datetime-picker').datetimepicker({
                 format: 'DD/MM/YYYY'
             });
         }
+
+        if ($('.year-picker').length > 0) {
+            $('.year-picker').datetimepicker({
+                format: 'YYYY'
+            });
+        }
+
     });
 
 });

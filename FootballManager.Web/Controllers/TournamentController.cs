@@ -13,27 +13,27 @@ namespace FootballManager.Web.Controllers
     public class TournamentController : Controller
     {
         private readonly ITournamentService _tournamentService;
-        private readonly IBaseService<Nation> _nationService;
+        private readonly IBaseService<Country> _countryService;
         private readonly IMapper _mapper;
 
-        public TournamentController(ITournamentService tournamentService, IBaseService<Nation> nationService, IMapper mapper)
+        public TournamentController(ITournamentService tournamentService, IBaseService<Country> countryService, IMapper mapper)
         {
             this._tournamentService = tournamentService;
-            this._nationService = nationService;
+            this._countryService = countryService;
             this._mapper = mapper;
         }
 
         // GET: Tournament
         public ActionResult Index()
         {
-            List<TournamentViewModel> tournaments = new List<TournamentViewModel>();
-            return View(tournaments);
+            var tournaments = _tournamentService.GetAll();
+            var tournamentModels = _mapper.Map<IEnumerable<Tournament>, IEnumerable<TournamentViewModel>>(tournaments);
+            return View(tournamentModels);
         }
 
         public ActionResult Create()
         {
-            var nationList = new SelectList(_nationService.GetAll(), "NationId", "NationName");
-            ViewBag.NationList = nationList;
+            ViewBag.CountryList = new SelectList(_countryService.GetAll(), "CountryId", "CountryName");
 
             return PartialView("_Create");
         }

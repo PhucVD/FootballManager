@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService.cs" />
-    <Compile Include="NationService.cs" />
+    <Compile Include="CountryService.cs" />
     <Compile Include="PlayerService.cs" />
     <Compile Include="TournamentService.cs" />
     <Compile Include="TeamService.cs" />

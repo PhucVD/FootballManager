@@ -32,10 +32,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NationId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CountryId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.NationId, (SelectList)ViewBag.NationList, "--Select Nation--", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.NationId, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.CountryId, (SelectList)ViewBag.NationList, "--Select Nation--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
             </div>
         </div>
 

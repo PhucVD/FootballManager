@@ -14,7 +14,7 @@ namespace FootballManager.Data
 
         public DbSet<Team> Teams { get; set; }
         public DbSet<Player> Players { get; set; }
-        public DbSet<Nation> Nations { get; set; }
+        public DbSet<Country> Countries { get; set; }
         public DbSet<Match> Matches { get; set; }
         public DbSet<Tournament> Tournaments { get; set; }
 

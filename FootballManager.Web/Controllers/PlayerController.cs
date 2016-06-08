@@ -12,13 +12,13 @@ namespace FootballManager.Web.Controllers
     public class PlayerController : Controller
     {
         private readonly IBaseService<Player> _playerService;
-        private readonly IBaseService<Nation> _nationService;
+        private readonly IBaseService<Country> _countryService;
         private readonly ITeamService _teamService;
 
-        public PlayerController(IBaseService<Player> playerService, IBaseService<Nation> nationService, ITeamService teamService)
+        public PlayerController(IBaseService<Player> playerService, IBaseService<Country> countryService, ITeamService teamService)
         {
             this._playerService = playerService;
-            this._nationService = nationService;
+            this._countryService = countryService;
             this._teamService = teamService;
         }
 
@@ -49,7 +49,7 @@ namespace FootballManager.Web.Controllers
 
         private void GetSelectList()
         {
-            ViewBag.NationList = new SelectList(_nationService.GetAll(), "NationId", "NationName");
+            ViewBag.CountryList = new SelectList(_countryService.GetAll(), "CountryId", "CountryName");
             ViewBag.TeamList = new SelectList(_teamService.GetClubsOnly(), "TeamId", "TeamName");
         }
 

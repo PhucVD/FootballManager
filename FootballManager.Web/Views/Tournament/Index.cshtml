@@ -24,12 +24,14 @@
             @Html.DisplayNameFor(model => model.Year)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.HostCountryId)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.FromDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ToDate)
         </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -45,15 +47,13 @@
                 @Html.DisplayFor(modelItem => item.Year)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Host.CountryName)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.FromDate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ToDate)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {/* id=item.PrimaryKey */}) |
-                @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */}) |
-                @Html.ActionLink("Delete", "Delete", new {/* id=item.PrimaryKey */})
             </td>
         </tr>
     }

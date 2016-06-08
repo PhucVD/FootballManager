@@ -28,10 +28,10 @@ namespace FootballManager.Domain
         public int? TeamId { get; set; }
 
         [Display(Name = "Nationality")]
-        public int NationId { get; set; }
+        public int CountryId { get; set; }
 
         public virtual Team Team { get; set; }
 
-        public virtual Nation Nationality { get; set; }
+        public virtual Country Nationality { get; set; }
     }
 }

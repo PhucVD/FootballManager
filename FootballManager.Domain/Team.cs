@@ -13,10 +13,10 @@ namespace FootballManager.Domain
         [Display(Name="Team Type")]
         public TeamType TeamType { get; set; }
 
-        [Display(Name="Nation")]
-        public int NationId { get; set; }
+        [Display(Name= "Country")]
+        public int CountryId { get; set; }
 
-        public virtual Nation Nation { get; set; }
+        public virtual Country Country { get; set; }
 
         public virtual ICollection<Player> Players { get; set; }
     }

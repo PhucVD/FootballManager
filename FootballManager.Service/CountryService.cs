@@ -4,9 +4,9 @@ using FootballManager.Repository.UnitOfWorks;
 
 namespace FootballManager.Service
 {
-    public class NationService: BaseService<Nation>
+    public class CountryService : BaseService<Country>
     {
-        public NationService(IUnitOfWork unitOfWork, IRepository<Nation> repository) : base(unitOfWork, repository)
+        public CountryService(IUnitOfWork unitOfWork, IRepository<Country> repository) : base(unitOfWork, repository)
         {
             
         }

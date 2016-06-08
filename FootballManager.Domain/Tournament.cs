@@ -21,10 +21,10 @@ namespace FootballManager.Domain
 
         public DateTime? ToDate { get; set; }
 
-        public int? HostNationId { get; set; }
+        public int? HostCountryId { get; set; }
 
-        [ForeignKey("HostNationId")]
-        public Nation HostNation { get; set; }
+        [ForeignKey("HostCountryId")]
+        public Country Host { get; set; }
 
         public ProgressStatus TournamentStatus { get; set; }
 

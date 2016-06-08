@@ -20,15 +20,17 @@ namespace FootballManager.Web.ViewModels
         public int Year { get; set; }
 
         [Display(Name="From Date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? FromDate { get; set; }
 
         [Display(Name = "To Date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? ToDate { get; set; }
 
-        [Display(Name = "Host Nation")]
-        public int? HostNationId { get; set; }
+        [Display(Name = "Host")]
+        public int? HostCountryId { get; set; }
 
-        public Nation HostNation { get; set; }
+        public Country Host { get; set; }
 
         [Required]
         [Display(Name="Status")]
