@@ -6,7 +6,8 @@ using System.Web.Mvc;
 using AutoMapper;
 using FootballManager.Domain;
 using FootballManager.Service;
-using FootballManager.Web.ViewModels;
+using FootballManager.Web.Common;
+using FootballManager.Web.Models;
 
 namespace FootballManager.Web.Controllers
 {
@@ -26,8 +27,14 @@ namespace FootballManager.Web.Controllers
         // GET: Tournament
         public ActionResult Index()
         {
-            var tournaments = _tournamentService.GetAll();
+            var tournaments = _tournamentService.GetMany(x => true);
             var tournamentModels = _mapper.Map<IEnumerable<Tournament>, IEnumerable<TournamentViewModel>>(tournaments);
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_TournamentList", tournamentModels);
+            }
+
             return View(tournamentModels);
         }
 
@@ -48,10 +55,17 @@ namespace FootballManager.Web.Controllers
                 _tournamentService.Insert(tournament);
                 _tournamentService.Save();
 
-                return Json("Create successfully!", JsonRequestBehavior.AllowGet);
+                return Json(new JsonInfo { Status = JsonStatus.Success, Message = "Save data successfully!" }, JsonRequestBehavior.AllowGet);
 
             }
-            return Json("Failed", JsonRequestBehavior.AllowGet);
+            return Json(new JsonInfo { Status= JsonStatus.Failed, Message = "Save data failed!" }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            _tournamentService.DeleteById(id);
+            _tournamentService.Save();
+            return RedirectToAction("Index");
         }
     }
 }

@@ -49,7 +49,7 @@ namespace FootballManager.Domain
     public enum ProgressStatus
     {
         [Display(Name = "Not Occurred")]
-        NotOccurred,
+        NotOccurred = 1,
 
         Ongoing,
 

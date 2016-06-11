@@ -24,12 +24,15 @@ namespace FootballManager.Web
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/respond.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/datetimepicker").Include(
+            bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                         "~/Scripts/moment.js",
-                       "~/Scripts/bootstrap-datetimepicker.js"));
+                        "~/Scripts/jquery.bootstrap-growl.js",
+                        "~/Scripts/bootstrap-datetimepicker.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                         "~/Scripts/Application/datetimepicker.js",
+                        "~/Scripts/Application/modal.js",
+                        "~/Scripts/Application/notification.js",
                         "~/Scripts/Application/app.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

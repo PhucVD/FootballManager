@@ -1,13 +1,12 @@
 ﻿@using FootballManager.Web.Common
 @model TournamentViewModel
 
-@*@using (Ajax.BeginForm("Create", "Tournament", new AjaxOptions
+@using (Ajax.BeginForm("Create", "Tournament", new AjaxOptions
 {
     HttpMethod = "POST",
     OnSuccess = "onSuccessModal",
-    OnFailure = "onFailureModal"
-}))*@
-@using (Html.BeginForm())
+    OnFailure = "onFailureModal",
+}, new { data_refresh_id = "#tournamentList", data_refresh_url = Url.Action("Index")}))
 {
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

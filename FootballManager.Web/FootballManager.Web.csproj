@@ -152,6 +152,7 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Common\AutoMapperProfile.cs" />
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\JsonResult.cs" />
     <Compile Include="Controllers\ListController.cs" />
     <Compile Include="Controllers\MatchController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
@@ -161,7 +162,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\TournamentViewModel.cs" />
+    <Compile Include="Models\TournamentViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-datetimepicker.css" />
@@ -177,6 +178,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\Application\app.js" />
     <Content Include="Scripts\Application\datetimepicker.js" />
+    <Content Include="Scripts\Application\modal.js" />
+    <Content Include="Scripts\Application\notification.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -269,6 +272,8 @@
     <Content Include="Scripts\jquery-2.2.3.min.js" />
     <Content Include="Scripts\jquery-2.2.3.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.bootstrap-growl.js" />
+    <Content Include="Scripts\jquery.bootstrap-growl.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -312,10 +317,10 @@
     <Content Include="Views\Tournament\Index.cshtml" />
     <Content Include="Views\Shared\_Modal.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
+    <Content Include="Views\Tournament\_TournamentList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\List\" />
   </ItemGroup>
   <ItemGroup>

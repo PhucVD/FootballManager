@@ -20,6 +20,8 @@ namespace FootballManager.Repository.Repositories
 
         IQueryable<T> GetMany(Expression<Func<T, bool>> filter);
 
+        IQueryable<T> GetMany(Expression<Func<T, object>>[] includes, Expression<Func<T, bool>> filter);
+
         int ExecuteCommand(string sql);
     }
 }

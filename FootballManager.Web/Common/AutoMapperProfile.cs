@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using FootballManager.Domain;
-using FootballManager.Web.ViewModels;
+using FootballManager.Web.Models;
 
 namespace FootballManager.Web.Common
 {

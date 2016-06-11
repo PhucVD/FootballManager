@@ -1,35 +1,13 @@
 ﻿$(function() {
-    $(".modal").on("show.bs.modal", function () {
-        // Load modal
-        var url = $(".btn-modal").data("url");
-        $(".modal-content").load(url);
-    });
-    $(".modal").on("shown.bs.modal", function () {
-        // Enable modal validation
-        $.validator.unobtrusive.parse($(this));
-
-        // Init datetime picker
-        if ($('.datetime-picker').length > 0) {
-            $('.datetime-picker').datetimepicker({
-                format: 'DD/MM/YYYY'
-            });
-        }
-
-        if ($('.year-picker').length > 0) {
-            $('.year-picker').datetimepicker({
-                format: 'YYYY'
-            });
-        }
-
-    });
-
+    Modal.init();
 });
 
-function onSuccessModal() {
-    console.log("on success");
+function onSuccessModal(jsonResult) {
+    Notification.showResult(jsonResult);
+    Modal.refreshData();
+    Modal.close();
 }
 
-function onFailureModal() {
-    console.log("on failure");
-
+function onFailureModal(jsonResult) {
+    Notification.showError(jsonResult.Message);
 }

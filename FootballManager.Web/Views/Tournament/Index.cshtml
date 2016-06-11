@@ -12,51 +12,6 @@
     </button>
 </p>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TournamentName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TournamentType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Year)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HostCountryId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FromDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ToDate)
-        </th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TournamentName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TournamentType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Year)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Host.CountryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FromDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ToDate)
-            </td>
-        </tr>
-    }
-
-</table>
-
+<div id="tournamentList">
+    @Html.Partial("_TournamentList", Model)
+</div>

@@ -69,7 +69,19 @@ namespace FootballManager.Repository.Repositories
 
         public virtual IQueryable<TEntity> GetMany(Expression<Func<TEntity, bool>> filter)
         {
-            return dbSet.Where(filter);
+            var query = dbSet.AsQueryable();
+            return query.Where(filter);
+        }
+
+        public virtual IQueryable<TEntity> GetMany(Expression<Func<TEntity, object>>[] includes, Expression<Func<TEntity, bool>> filter)
+        {
+            var query = dbSet.AsQueryable();
+            if (includes != null)
+            {
+                query = includes.Aggregate(query,
+                          (current, include) => current.Include(include));
+            }
+            return query.Where(filter);
         }
 
         public virtual int ExecuteCommand(string sql)

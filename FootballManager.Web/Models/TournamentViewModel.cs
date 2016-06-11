@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using FootballManager.Domain;
 
-namespace FootballManager.Web.ViewModels
+namespace FootballManager.Web.Models
 {
     public class TournamentViewModel
     {
