@@ -41,7 +41,13 @@
                 @Html.DisplayFor(modelItem => item.ToDate)
             </td>
             <td>
-                <a href="@Url.Action("Delete", new { @id = item.TournamentId })"><span class="glyphicon glyphicon-remove-circle"></span></a>
+                @Ajax.ActionLink("Delete", "Delete", new { @id = item.TournamentId }, new AjaxOptions
+                {
+                    HttpMethod = "GET",
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "tournamentList"
+                })
+                @*<a href="@Url.Action("Delete", new { @id = item.TournamentId })"><span class="glyphicon glyphicon-remove-circle"></span></a>*@
             </td>
         </tr>
     }

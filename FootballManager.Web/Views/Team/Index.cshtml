@@ -1,45 +1,32 @@
-﻿@model IEnumerable<FootballManager.Domain.Team>
+﻿@using FootballManager.Domain
+@model IEnumerable<FootballManager.Domain.Team>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Team List";
 }
 
-<h2>Index</h2>
+<h2>Team List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button type="button" class="btn btn-info btn-modal" data-toggle="modal" data-target="#standardModal" data-url="@Url.Action("Create")">
+        Create New
+    </button>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TeamName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TeamType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Country.CountryName)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TeamName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TeamType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Country.CountryName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TeamId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TeamId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TeamId })
-        </td>
-    </tr>
-}
+<div class="form-horizontal">
+    <div class="form-group">
+        @*<label class="control-label col-md-2">Filters:</label>*@
+        <div class="btn-group pull-right">
+            <button class="btn btn-primary ajax-button" type="button" data-url="@Url.Action("Filter", new {type = TeamType.Nation})" data-target-id="teamList" data-method="GET">
+                Nation
+            </button>
+            <button class="btn btn-success ajax-button" type="button" data-url="@Url.Action("Filter", new {type = TeamType.Club})" data-target-id="teamList" data-method="GET">
+                Club
+            </button>
+        </div>
+    </div>
+</div>
+<div id="teamList" class="row">
+    @Html.Partial("_TeamList", Model)
+</div>
 
-</table>

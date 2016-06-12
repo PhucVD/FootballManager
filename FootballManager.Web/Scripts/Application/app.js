@@ -3,8 +3,8 @@
 });
 
 function onSuccessModal(jsonResult) {
-    Notification.showResult(jsonResult);
-    Modal.refreshData();
+    //Notification.showResult(jsonResult);
+    //Modal.refreshData();
     Modal.close();
 }
 

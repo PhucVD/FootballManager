@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
@@ -11,25 +12,21 @@ using FootballManager.Web.Models;
 
 namespace FootballManager.Web.Controllers
 {
-    public class TournamentController : Controller
+    public class TournamentController : BaseController
     {
         private readonly ITournamentService _tournamentService;
         private readonly IBaseService<Country> _countryService;
-        private readonly IMapper _mapper;
 
-        public TournamentController(ITournamentService tournamentService, IBaseService<Country> countryService, IMapper mapper)
+        public TournamentController(ITournamentService tournamentService, IBaseService<Country> countryService, IMapper mapper): base(mapper)
         {
             this._tournamentService = tournamentService;
             this._countryService = countryService;
-            this._mapper = mapper;
         }
 
         // GET: Tournament
         public ActionResult Index()
         {
-            var tournaments = _tournamentService.GetMany(x => true);
-            var tournamentModels = _mapper.Map<IEnumerable<Tournament>, IEnumerable<TournamentViewModel>>(tournaments);
-
+            var tournamentModels = GetTournamentList();
             if (Request.IsAjaxRequest())
             {
                 return PartialView("_TournamentList", tournamentModels);
@@ -41,7 +38,6 @@ namespace FootballManager.Web.Controllers
         public ActionResult Create()
         {
             ViewBag.CountryList = new SelectList(_countryService.GetAll(), "CountryId", "CountryName");
-
             return PartialView("_Create");
         }
 
@@ -55,17 +51,33 @@ namespace FootballManager.Web.Controllers
                 _tournamentService.Insert(tournament);
                 _tournamentService.Save();
 
-                return Json(new JsonInfo { Status = JsonStatus.Success, Message = "Save data successfully!" }, JsonRequestBehavior.AllowGet);
-
+                return PartialView("_TournamentList", GetTournamentList());
             }
-            return Json(new JsonInfo { Status= JsonStatus.Failed, Message = "Save data failed!" }, JsonRequestBehavior.AllowGet);
+
+            return Json(new JsonInfo(JsonStatus.Failed), JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            _tournamentService.DeleteById(id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Bad Request");
+            }
+            _tournamentService.DeleteById(id.Value);
             _tournamentService.Save();
-            return RedirectToAction("Index");
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_TournamentList", GetTournamentList());
+            }
+            return Json(new JsonInfo(JsonStatus.Success), JsonRequestBehavior.AllowGet);
         }
+
+        private IEnumerable<TournamentViewModel> GetTournamentList()
+        {
+            var tournaments = _tournamentService.GetMany(x => true);
+            var tournamentModels = _mapper.Map<IEnumerable<Tournament>, IEnumerable<TournamentViewModel>>(tournaments);
+            return tournamentModels;
+        } 
     }
 }

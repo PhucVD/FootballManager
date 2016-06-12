@@ -1,13 +1,16 @@
-﻿var Modal = (function () {
+﻿var Modal = (function() {
     var init = function() {
-        $(".modal").on("show.bs.modal", function () {
+        $(".modal").on("show.bs.modal", function() {
             // Load modal
             var url = $(".btn-modal").data("url");
             $(".modal-content").load(url);
         });
-        $(".modal").on("shown.bs.modal", function () {
+        $(".modal").on("shown.bs.modal", function() {
             // Enable modal validation
             $.validator.unobtrusive.parse($(this));
+
+            //init select picker
+            $('.selectpicker').selectpicker();
 
             // Init datetime picker
             if ($('.datetime-picker').length > 0) {
@@ -28,7 +31,7 @@
         $('.modal').modal('toggle');
     }
 
-    var refreshData = function () {
+    var refreshData = function() {
         var $form = $(".modal form");
         var url = $form.data("refresh-url");
         var id = $form.data("refresh-id");
@@ -37,7 +40,7 @@
 
     return {
         init: init,
-        refreshData: refreshData,
-        close: close
+        close: close,
+        refreshData: refreshData
     };
 })();

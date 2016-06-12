@@ -1,28 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using FootballManager.Domain;
 using FootballManager.Repository.Repositories;
 using FootballManager.Repository.UnitOfWorks;
 
 namespace FootballManager.Service
 {
-    public class TeamService: BaseService<Team>, ITeamService
+    public class TournamentService : BaseService<Tournament>, ITournamentService
     {
-        public TeamService(IUnitOfWork unitOfWork, ITeamRepository repository) : base(unitOfWork, repository)
+        public TournamentService(IUnitOfWork unitOfWork, IRepository<Tournament> repository) : base(unitOfWork, repository)
         {
 
         }
 
-        public IEnumerable<Team> GetClubsOnly()
+        public override IEnumerable<Tournament> GetMany(Expression<Func<Tournament, bool>> filter)
         {
-            return this.repository.GetMany(x => x.TeamType == TeamType.Club);
-        } 
-        
+            return repository.GetMany(new Expression<Func<Tournament, object>>[] { x => x.Host }, filter)
+                .AsEnumerable();
+        }
     }
 
-    public interface ITeamService : IBaseService<Team>
+    public interface ITournamentService : IBaseService<Tournament>
     {
-        IEnumerable<Team> GetClubsOnly();
 
     }
 }

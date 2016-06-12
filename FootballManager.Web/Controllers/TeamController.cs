@@ -1,17 +1,20 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using AutoMapper;
 using FootballManager.Domain;
 using FootballManager.Service;
+using FootballManager.Web.Models;
 
 namespace FootballManager.Web.Controllers
 {
-    public class TeamController : Controller
+    public class TeamController : BaseController
     {
         private readonly ITeamService _teamService;
         private readonly IBaseService<Country> _countryService;
 
-        public TeamController(ITeamService teamService, IBaseService<Country> countryService)
+        public TeamController(ITeamService teamService, IBaseService<Country> countryService, IMapper mapper) : base(mapper)
         {
             this._teamService = teamService;
             this._countryService = countryService;
@@ -20,22 +23,18 @@ namespace FootballManager.Web.Controllers
         // GET: Team
         public ActionResult Index()
         {
-            return View(_teamService.GetAll());
+            return View(_teamService.GetMany(x => true));
         }
 
-        // GET: Team/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Filter(TeamType type)
         {
-            if (id == null)
+            var teams = _teamService.GetMany(x => x.TeamType == type).ToList();
+            if (Request.IsAjaxRequest())
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return PartialView("_TeamList", teams);
             }
-            Team team = _teamService.GetById(id.Value);
-            if (team == null)
-            {
-                return HttpNotFound();
-            }
-            return View(team);
+
+            return View("Index");
         }
 
         // GET: Team/Create

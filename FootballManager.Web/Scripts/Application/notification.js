@@ -1,6 +1,6 @@
 ﻿var Notification = (function () {
     var growl = function (message, type) {
-        var option = { type: type };
+        var option = { type: type, delay: 2000 };
         $.bootstrapGrowl(message, option);
     };
     var info = function (message) {
