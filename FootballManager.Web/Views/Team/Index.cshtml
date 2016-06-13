@@ -1,4 +1,5 @@
 ﻿@using FootballManager.Domain
+@using FootballManager.Web.Extensions
 @model IEnumerable<FootballManager.Domain.Team>
 
 @{
@@ -17,9 +18,13 @@
     <div class="form-group">
         @*<label class="control-label col-md-2">Filters:</label>*@
         <div class="btn-group pull-right">
-            <button class="btn btn-primary ajax-button" type="button" data-url="@Url.Action("Filter", new {type = TeamType.Nation})" data-target-id="teamList" data-method="GET">
-                Nation
-            </button>
+            @Html.AjaxButton("Nation", new AjaxButtonOptions
+            {
+               Url = Url.Action("Filter", new { type = TeamType.Nation }),
+               Method = "GET",
+               CssClass = "btn-primary",
+               TargetId = "teamList"
+            }, new { @data_test = "test" })
             <button class="btn btn-success ajax-button" type="button" data-url="@Url.Action("Filter", new {type = TeamType.Club})" data-target-id="teamList" data-method="GET">
                 Club
             </button>
