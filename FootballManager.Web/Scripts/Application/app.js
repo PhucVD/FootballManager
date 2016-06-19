@@ -1,5 +1,6 @@
 ﻿$(function() {
     Modal.init();
+    XEditable.init();
 });
 
 function onSuccessModal(jsonResult) {

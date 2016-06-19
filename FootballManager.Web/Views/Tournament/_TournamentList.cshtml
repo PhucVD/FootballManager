@@ -1,4 +1,5 @@
-﻿@model IEnumerable<TournamentViewModel>
+﻿@using FootballManager.Web.Extensions
+@model IEnumerable<TournamentViewModel>
 
 <table class="table">
     <tr>
@@ -26,19 +27,44 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TournamentName)
+                @Html.Xeditable(new XeditableOptions
+                {
+                    Pk = item.TournamentId.ToString(),
+                    Value = item.TournamentName,
+                    Type = XeditableType.Text
+                })
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Year)
+                @Html.Xeditable(new XeditableOptions
+                {
+                    Pk = item.TournamentId.ToString(),
+                    Value = item.Year.ToString(),
+                    Type = XeditableType.Text
+                })
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Host.CountryName)
+                @Html.Xeditable(new XeditableOptions
+                {
+                    Pk = item.TournamentId.ToString(),
+                    Value = item.Host?.CountryName,
+                    Type = XeditableType.Select2
+                })
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FromDate)
+                @Html.Xeditable(new XeditableOptions
+                {
+                    Pk = item.TournamentId.ToString(),
+                    Value = item.FromDate.Format(),
+                    Type = XeditableType.Text
+                })
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ToDate)
+                @Html.Xeditable(new XeditableOptions
+                {
+                    Pk = item.TournamentId.ToString(),
+                    Value = item.ToDate.Format(),
+                    Type = XeditableType.Text
+                })
             </td>
             <td>
                 @Ajax.ActionLink("Delete", "Delete", new { @id = item.TournamentId }, new AjaxOptions
