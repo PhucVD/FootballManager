@@ -49,8 +49,8 @@ namespace FootballManager.Web.Controllers
 
         private void GetSelectList()
         {
-            ViewBag.CountryList = new SelectList(_countryService.GetAll(), "CountryId", "CountryName");
-            ViewBag.TeamList = new SelectList(_teamService.GetClubsOnly(), "TeamId", "TeamName");
+            ViewBag.CountryList = new SelectList(_countryService.GetAll(), "CountryId", "Name");
+            ViewBag.TeamList = new SelectList(_teamService.GetClubsOnly(), "TeamId", "Name");
         }
 
         [HttpPost]

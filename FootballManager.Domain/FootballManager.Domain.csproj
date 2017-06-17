@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Continent.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="Country.cs" />

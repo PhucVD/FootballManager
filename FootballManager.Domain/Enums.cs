@@ -7,17 +7,6 @@ using System.Threading.Tasks;
 
 namespace FootballManager.Domain
 {
-
-    public enum Continent
-    {
-        Asia = 1,
-        Africa,
-        Europe,
-        SouthAmerican,
-        NorthAmerican,
-        Oceania
-    }
-
     public enum TournamentType
     {
         [Display(Name = "World Cup")]

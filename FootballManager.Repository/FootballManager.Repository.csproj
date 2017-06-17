@@ -47,9 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201606080941329_CreateSchema.cs" />
-    <Compile Include="Migrations\201606080941329_CreateSchema.Designer.cs">
-      <DependentUpon>201606080941329_CreateSchema.cs</DependentUpon>
+    <Compile Include="Migrations\201706171755158_CreateSchema.cs" />
+    <Compile Include="Migrations\201706171755158_CreateSchema.Designer.cs">
+      <DependentUpon>201706171755158_CreateSchema.cs</DependentUpon>
     </Compile>
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
@@ -71,8 +71,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606080941329_CreateSchema.resx">
-      <DependentUpon>201606080941329_CreateSchema.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706171755158_CreateSchema.resx">
+      <DependentUpon>201706171755158_CreateSchema.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

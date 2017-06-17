@@ -13,7 +13,7 @@ namespace FootballManager.Repository.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201606080941329_CreateSchema"; }
+            get { return "201706171755158_CreateSchema"; }
         }
         
         string IMigrationMetadata.Source

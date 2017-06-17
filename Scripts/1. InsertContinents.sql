@@ -1,0 +1,7 @@
+INSERT INTO Continent (ContinentId, Code, Name) VALUES (1, 'AF', 'Africa')
+INSERT INTO Continent (ContinentId, Code, Name) VALUES (2, 'AN', 'Antarctica')
+INSERT INTO Continent (ContinentId, Code, Name) VALUES (3, 'AS', 'Asia')
+INSERT INTO Continent (ContinentId, Code, Name) VALUES (4, 'EU', 'Europe')
+INSERT INTO Continent (ContinentId, Code, Name) VALUES (5, 'NA', 'North America')
+INSERT INTO Continent (ContinentId, Code, Name) VALUES (6, 'OC', 'Oceania')
+INSERT INTO Continent (ContinentId, Code, Name) VALUES (7, 'SA', 'South America')

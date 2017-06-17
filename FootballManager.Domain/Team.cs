@@ -8,7 +8,7 @@ namespace FootballManager.Domain
         public int TeamId { get; set; }
 
         [Display(Name = "Team")]
-        public string TeamName { get; set; }
+        public string Name { get; set; }
 
         [Display(Name="Team Type")]
         public TeamType TeamType { get; set; }

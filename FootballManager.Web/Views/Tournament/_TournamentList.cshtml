@@ -4,7 +4,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TournamentName)
+            @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Year)
@@ -30,7 +30,7 @@
                 @Html.Xeditable(new XeditableOptions
                 {
                     Pk = item.TournamentId.ToString(),
-                    Value = item.TournamentName,
+                    Value = item.Name,
                     Type = XeditableType.Text
                 })
             </td>
@@ -46,7 +46,7 @@
                 @Html.Xeditable(new XeditableOptions
                 {
                     Pk = item.TournamentId.ToString(),
-                    Value = item.Host?.CountryName,
+                    Value = item.Host?.Name,
                     Type = XeditableType.Select2
                 })
             </td>

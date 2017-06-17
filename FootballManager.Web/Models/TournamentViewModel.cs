@@ -10,7 +10,7 @@ namespace FootballManager.Web.Models
 
         [Required]
         [Display(Name="Tournament Name")]
-        public string TournamentName { get; set; }
+        public string Name { get; set; }
 
         [Required]
         [Display(Name="Tournament Type")]

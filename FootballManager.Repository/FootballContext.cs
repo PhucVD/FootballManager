@@ -15,12 +15,14 @@ namespace FootballManager.Data
         public DbSet<Team> Teams { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Country> Countries { get; set; }
+        public DbSet<Continent> Continents { get; set; }
         public DbSet<Match> Matches { get; set; }
         public DbSet<Tournament> Tournaments { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
     }
 }

@@ -1,0 +1,5 @@
+- Refactor BaseService
+- Implement exception handler
+- Authentication
+- Web API
+- Unit Test

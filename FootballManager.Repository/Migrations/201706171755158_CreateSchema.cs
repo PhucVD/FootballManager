@@ -8,32 +8,31 @@ namespace FootballManager.Repository.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.Continent",
+                c => new
+                    {
+                        ContinentId = c.Int(nullable: false),
+                        Code = c.String(maxLength: 2, unicode: false),
+                        Name = c.String(maxLength: 50),
+                    })
+                .PrimaryKey(t => t.ContinentId);
+            
+            CreateTable(
                 "dbo.Country",
                 c => new
                     {
-                        CountryId = c.Int(nullable: false),
-                        CountryName = c.String(),
-                        Iso = c.String(),
-                        Iso3 = c.String(),
+                        CountryId = c.Int(nullable: false, identity: true),
+                        Name = c.String(maxLength: 100),
+                        Iso = c.String(maxLength: 2, unicode: false),
+                        Iso3 = c.String(maxLength: 3, unicode: false),
                         NumCode = c.Int(),
                         PhoneCode = c.Int(),
-                        Continent = c.Int(),
+                        ContinentId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.CountryId);
-
-            CreateTable(
-                "dbo.Team",
-                c => new
-                {
-                    TeamId = c.Int(nullable: false, identity: true),
-                    TeamName = c.String(),
-                    TeamType = c.Int(nullable: false),
-                    CountryId = c.Int(nullable: false),
-                })
-                .PrimaryKey(t => t.TeamId)
-                .ForeignKey("dbo.Country", t => t.CountryId, cascadeDelete: true)
-                .Index(t => t.CountryId);
-
+                .PrimaryKey(t => t.CountryId)
+                .ForeignKey("dbo.Continent", t => t.ContinentId)
+                .Index(t => t.ContinentId);
+            
             CreateTable(
                 "dbo.Match",
                 c => new
@@ -48,11 +47,24 @@ namespace FootballManager.Repository.Migrations
                         ResultType = c.Int(),
                     })
                 .PrimaryKey(t => t.MatchId)
-                .ForeignKey("dbo.Team", t => t.FirstTeamId, cascadeDelete: true)
-                .ForeignKey("dbo.Team", t => t.SecondTeamId, cascadeDelete: false)
+                .ForeignKey("dbo.Team", t => t.FirstTeamId)
+                .ForeignKey("dbo.Team", t => t.SecondTeamId)
                 .Index(t => t.FirstTeamId)
                 .Index(t => t.SecondTeamId);
-
+            
+            CreateTable(
+                "dbo.Team",
+                c => new
+                    {
+                        TeamId = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        TeamType = c.Int(nullable: false),
+                        CountryId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.TeamId)
+                .ForeignKey("dbo.Country", t => t.CountryId)
+                .Index(t => t.CountryId);
+            
             CreateTable(
                 "dbo.Player",
                 c => new
@@ -66,7 +78,7 @@ namespace FootballManager.Repository.Migrations
                         CountryId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.PlayerId)
-                .ForeignKey("dbo.Country", t => t.CountryId, cascadeDelete: true)
+                .ForeignKey("dbo.Country", t => t.CountryId)
                 .ForeignKey("dbo.Team", t => t.TeamId)
                 .Index(t => t.TeamId)
                 .Index(t => t.CountryId);
@@ -76,7 +88,7 @@ namespace FootballManager.Repository.Migrations
                 c => new
                     {
                         TournamentId = c.Int(nullable: false, identity: true),
-                        TournamentName = c.String(),
+                        Name = c.String(),
                         TournamentType = c.Int(nullable: false),
                         Year = c.Int(nullable: false),
                         FromDate = c.DateTime(),
@@ -98,17 +110,20 @@ namespace FootballManager.Repository.Migrations
             DropForeignKey("dbo.Player", "TeamId", "dbo.Team");
             DropForeignKey("dbo.Player", "CountryId", "dbo.Country");
             DropForeignKey("dbo.Team", "CountryId", "dbo.Country");
+            DropForeignKey("dbo.Country", "ContinentId", "dbo.Continent");
             DropIndex("dbo.Tournament", new[] { "HostCountryId" });
             DropIndex("dbo.Player", new[] { "CountryId" });
             DropIndex("dbo.Player", new[] { "TeamId" });
             DropIndex("dbo.Team", new[] { "CountryId" });
             DropIndex("dbo.Match", new[] { "SecondTeamId" });
             DropIndex("dbo.Match", new[] { "FirstTeamId" });
+            DropIndex("dbo.Country", new[] { "ContinentId" });
             DropTable("dbo.Tournament");
             DropTable("dbo.Player");
             DropTable("dbo.Team");
             DropTable("dbo.Match");
             DropTable("dbo.Country");
+            DropTable("dbo.Continent");
         }
     }
 }
