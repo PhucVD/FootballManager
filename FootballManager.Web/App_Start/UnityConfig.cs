@@ -7,6 +7,7 @@ using FootballManager.Service;
 using FootballManager.Web.Common;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
+using FootballManager.Service.Interfaces;
 
 namespace FootballManager.Web.App_Start
 {
@@ -38,13 +39,13 @@ namespace FootballManager.Web.App_Start
         /// change the defaults), as Unity allows resolving a concrete type even if it was not previously registered.</remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterType(typeof(IBaseService<>), typeof(BaseService<>));
-            container.RegisterType(typeof (IBaseService<Player>), typeof(PlayerService));
-            container.RegisterType(typeof(IBaseService<Country>), typeof(CountryService));
+            //Services
+            container.RegisterType<IPlayerService, PlayerService>();
+            container.RegisterType<ICountryService, CountryService>();
             container.RegisterType<ITeamService, TeamService>();
             container.RegisterType<ITournamentService, TournamentService>();
 
-
+            //Repositories
             container.RegisterType<IUnitOfWork, UnitOfWork>(new ContainerControlledLifetimeManager());
             container.RegisterType(typeof(IRepository<>), typeof(GenericRepository<>));
             container.RegisterType<ITeamRepository, TeamRepository>();

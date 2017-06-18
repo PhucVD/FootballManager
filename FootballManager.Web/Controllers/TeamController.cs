@@ -6,15 +6,16 @@ using AutoMapper;
 using FootballManager.Domain;
 using FootballManager.Service;
 using FootballManager.Web.Models;
+using FootballManager.Service.Interfaces;
 
 namespace FootballManager.Web.Controllers
 {
     public class TeamController : BaseController
     {
         private readonly ITeamService _teamService;
-        private readonly IBaseService<Country> _countryService;
+        private readonly ICountryService _countryService;
 
-        public TeamController(ITeamService teamService, IBaseService<Country> countryService, IMapper mapper) : base(mapper)
+        public TeamController(ITeamService teamService, ICountryService countryService, IMapper mapper) : base(mapper)
         {
             this._teamService = teamService;
             this._countryService = countryService;
@@ -23,12 +24,12 @@ namespace FootballManager.Web.Controllers
         // GET: Team
         public ActionResult Index()
         {
-            return View(_teamService.GetMany(x => true));
+            return View(_teamService.GetList());
         }
 
         public ActionResult Filter(TeamType type)
         {
-            var teams = _teamService.GetMany(x => x.TeamType == type).ToList();
+            var teams = _teamService.GetList(x => x.TeamType == type).ToList();
             if (Request.IsAjaxRequest())
             {
                 return PartialView("_TeamList", teams);
@@ -46,7 +47,7 @@ namespace FootballManager.Web.Controllers
 
         private void GetSelectList()
         {
-            ViewBag.CountryList = new SelectList(_countryService.GetAll(), "CountryId", "CountryName");
+            ViewBag.CountryList = new SelectList(_countryService.GetList(), "CountryId", "CountryName");
         }
 
         // POST: Team/Create

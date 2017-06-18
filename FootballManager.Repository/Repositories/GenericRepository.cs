@@ -62,18 +62,18 @@ namespace FootballManager.Repository.Repositories
             return entity;
         }
 
-        public virtual IQueryable<TEntity> GetAll()
+        public virtual IQueryable<TEntity> GetList()
         {
             return dbSet.AsQueryable();
         }
 
-        public virtual IQueryable<TEntity> GetMany(Expression<Func<TEntity, bool>> filter)
+        public virtual IQueryable<TEntity> GetList(Expression<Func<TEntity, bool>> filter)
         {
             var query = dbSet.AsQueryable();
             return query.Where(filter);
         }
 
-        public virtual IQueryable<TEntity> GetMany(Expression<Func<TEntity, object>>[] includes, Expression<Func<TEntity, bool>> filter)
+        public virtual IQueryable<TEntity> GetList(Expression<Func<TEntity, object>>[] includes, Expression<Func<TEntity, bool>> filter)
         {
             var query = dbSet.AsQueryable();
             if (includes != null)

@@ -9,15 +9,16 @@ using FootballManager.Domain;
 using FootballManager.Service;
 using FootballManager.Web.Common;
 using FootballManager.Web.Models;
+using FootballManager.Service.Interfaces;
 
 namespace FootballManager.Web.Controllers
 {
     public class TournamentController : BaseController
     {
         private readonly ITournamentService _tournamentService;
-        private readonly IBaseService<Country> _countryService;
+        private readonly ICountryService _countryService;
 
-        public TournamentController(ITournamentService tournamentService, IBaseService<Country> countryService, IMapper mapper): base(mapper)
+        public TournamentController(ITournamentService tournamentService, ICountryService countryService, IMapper mapper): base(mapper)
         {
             this._tournamentService = tournamentService;
             this._countryService = countryService;
@@ -37,7 +38,7 @@ namespace FootballManager.Web.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.CountryList = new SelectList(_countryService.GetAll(), "CountryId", "CountryName");
+            ViewBag.CountryList = new SelectList(_countryService.GetList(), "CountryId", "CountryName");
             return PartialView("_Create");
         }
 
@@ -49,7 +50,6 @@ namespace FootballManager.Web.Controllers
             {
                 var tournament = _mapper.Map<TournamentViewModel, Tournament>(model);
                 _tournamentService.Insert(tournament);
-                _tournamentService.Save();
 
                 return PartialView("_TournamentList", GetTournamentList());
             }
@@ -64,7 +64,6 @@ namespace FootballManager.Web.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Bad Request");
             }
             _tournamentService.DeleteById(id.Value);
-            _tournamentService.Save();
 
             if (Request.IsAjaxRequest())
             {
@@ -75,7 +74,7 @@ namespace FootballManager.Web.Controllers
 
         private IEnumerable<TournamentViewModel> GetTournamentList()
         {
-            var tournaments = _tournamentService.GetMany(x => true);
+            var tournaments = _tournamentService.GetList(x => true);
             var tournamentModels = _mapper.Map<IEnumerable<Tournament>, IEnumerable<TournamentViewModel>>(tournaments);
             return tournamentModels;
         } 

@@ -6,16 +6,17 @@ using System.Web;
 using System.Web.Mvc;
 using FootballManager.Domain;
 using FootballManager.Service;
+using FootballManager.Service.Interfaces;
 
 namespace FootballManager.Web.Controllers
 {
     public class PlayerController : Controller
     {
-        private readonly IBaseService<Player> _playerService;
-        private readonly IBaseService<Country> _countryService;
+        private readonly IPlayerService _playerService;
+        private readonly ICountryService _countryService;
         private readonly ITeamService _teamService;
 
-        public PlayerController(IBaseService<Player> playerService, IBaseService<Country> countryService, ITeamService teamService)
+        public PlayerController(IPlayerService playerService, ICountryService countryService, ITeamService teamService)
         {
             this._playerService = playerService;
             this._countryService = countryService;
@@ -24,7 +25,7 @@ namespace FootballManager.Web.Controllers
 
         public ActionResult Index()
         {
-            return View(_playerService.GetAll());
+            return View(_playerService.GetList());
         }
 
         public ActionResult Details(int? id)
@@ -49,7 +50,7 @@ namespace FootballManager.Web.Controllers
 
         private void GetSelectList()
         {
-            ViewBag.CountryList = new SelectList(_countryService.GetAll(), "CountryId", "Name");
+            ViewBag.CountryList = new SelectList(_countryService.GetList(), "CountryId", "Name");
             ViewBag.TeamList = new SelectList(_teamService.GetClubsOnly(), "TeamId", "Name");
         }
 

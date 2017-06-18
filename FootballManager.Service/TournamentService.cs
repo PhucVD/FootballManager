@@ -5,25 +5,46 @@ using System.Linq.Expressions;
 using FootballManager.Domain;
 using FootballManager.Repository.Repositories;
 using FootballManager.Repository.UnitOfWorks;
+using FootballManager.Service.Interfaces;
 
 namespace FootballManager.Service
 {
-    public class TournamentService : BaseService<Tournament>, ITournamentService
+    public class TournamentService : BaseService, ITournamentService
     {
-        public TournamentService(IUnitOfWork unitOfWork, IRepository<Tournament> repository) : base(unitOfWork, repository)
-        {
+        private readonly IRepository<Tournament> _tournamentRepository;
 
+        public TournamentService(IUnitOfWork unitOfWork, IRepository<Tournament> repository) : base(unitOfWork)
+        {
+            _tournamentRepository = repository;
         }
 
-        public override IEnumerable<Tournament> GetMany(Expression<Func<Tournament, bool>> filter)
+
+        public Tournament GetById(int id)
         {
-            return repository.GetMany(new Expression<Func<Tournament, object>>[] { x => x.Host }, filter)
-                .AsEnumerable();
+            return _tournamentRepository.GetById(id);
         }
-    }
 
-    public interface ITournamentService : IBaseService<Tournament>
-    {
+        public IEnumerable<Tournament> GetList(Expression<Func<Tournament, bool>> filter)
+        {
+            return _tournamentRepository.GetList(new Expression<Func<Tournament, object>>[] { x => x.Host }, filter)
+                .ToList();
+        }
 
+        public void Insert(Tournament model)
+        {
+            _tournamentRepository.Insert(model);
+            this.Save();
+        }
+
+        public void Update(Tournament model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteById(int id)
+        {
+            _tournamentRepository.DeleteById(id);
+            this.Save();
+        }
     }
 }

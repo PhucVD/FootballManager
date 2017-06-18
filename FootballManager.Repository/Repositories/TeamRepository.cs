@@ -14,7 +14,7 @@ namespace FootballManager.Repository.Repositories
             
         }
 
-        public override IQueryable<Team> GetAll()
+        public override IQueryable<Team> GetList()
         {
             return dbSet.Include(p => p.Country);
         }

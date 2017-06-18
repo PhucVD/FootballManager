@@ -16,11 +16,11 @@ namespace FootballManager.Repository.Repositories
 
         T GetById(int id);
 
-        IQueryable<T> GetAll();
+        IQueryable<T> GetList();
 
-        IQueryable<T> GetMany(Expression<Func<T, bool>> filter);
+        IQueryable<T> GetList(Expression<Func<T, bool>> filter);
 
-        IQueryable<T> GetMany(Expression<Func<T, object>>[] includes, Expression<Func<T, bool>> filter);
+        IQueryable<T> GetList(Expression<Func<T, object>>[] includes, Expression<Func<T, bool>> filter);
 
         int ExecuteCommand(string sql);
     }

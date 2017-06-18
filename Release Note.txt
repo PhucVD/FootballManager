@@ -3,3 +3,9 @@
 - Authentication
 - Web API
 - Unit Test
+
+- Reference to: Domain > DTO > ViewModel
+https://stackoverflow.com/questions/21554977/should-services-always-return-dtos-or-can-they-also-return-domain-models
+
+- MVC Architecture
+https://github.com/chsakell/mvcarchitecture
