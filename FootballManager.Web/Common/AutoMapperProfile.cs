@@ -6,9 +6,11 @@ namespace FootballManager.Web.Common
 {
     public class AutoMapperProfile : Profile
     {
-        protected override void Configure()
+        public AutoMapperProfile()
         {
             CreateMap<TournamentViewModel, Tournament>().ReverseMap();
+
         }
+      
     }
 }

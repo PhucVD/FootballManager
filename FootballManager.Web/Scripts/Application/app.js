@@ -1,6 +1,7 @@
-﻿$(function() {
+﻿$(function () {
     Modal.init();
     XEditable.init();
+    DateTimePicker.init();
 });
 
 function onSuccessModal(jsonResult) {

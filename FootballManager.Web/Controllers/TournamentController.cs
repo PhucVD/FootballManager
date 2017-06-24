@@ -38,8 +38,8 @@ namespace FootballManager.Web.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.CountryList = new SelectList(_countryService.GetList(), "CountryId", "CountryName");
-            return PartialView("_Create");
+            ViewBag.CountryList = new SelectList(_countryService.GetList(), "CountryId", "Name");
+            return PartialView("_Create", new TournamentViewModel());
         }
 
         [HttpPost]
