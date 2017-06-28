@@ -17,11 +17,11 @@ namespace FootballManager.Web.Models
         public TournamentType TournamentType { get; set; }
 
         [Required]
-        public int Year { get; set; } = DateTime.Now.Year;
+        public int Year { get; set; }
 
-        [Display(Name = "From Date")]
+        [Display(Name="From Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime? FromDate { get; set; } = DateTime.Now;
+        public DateTime? FromDate { get; set; }
 
         [Display(Name = "To Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]

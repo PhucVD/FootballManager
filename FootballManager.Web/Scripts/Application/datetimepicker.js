@@ -13,15 +13,3 @@ $.validator.methods.date = function (value, element) {
         return this.optional(element) || !/Invalid|NaN/.test(new Date(value));
     }
 };
-
-var DateTimePicker = (function () {
-    var init = function () {
-        $(".datetimepicker").datetimepicker({
-            format: 'DD/MM/YYYY'
-        });
-    };
-
-    return {
-        init: init
-    };
-})();
