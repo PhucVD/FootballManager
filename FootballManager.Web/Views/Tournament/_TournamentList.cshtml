@@ -28,52 +28,65 @@
         <tr>
             <td>
                 @Html.Xeditable(new XeditableOptions
-                {
-                    Pk = item.TournamentId.ToString(),
-                    Value = item.Name,
-                    Type = XeditableType.Text
-                })
+           {
+               Pk = item.TournamentId.ToString(),
+               Value = item.Name,
+               Type = XeditableType.Text,
+               Name = "Name",
+               Url = Url.Action("Update")
+
+           })
             </td>
             <td>
                 @Html.Xeditable(new XeditableOptions
-                {
-                    Pk = item.TournamentId.ToString(),
-                    Value = item.Year.ToString(),
-                    Type = XeditableType.Text
-                })
+           {
+               Pk = item.TournamentId.ToString(),
+               Value = item.Year.ToString(),
+               Type = XeditableType.Text,
+               Url = Url.Action("Update")
+           })
             </td>
             <td>
                 @Html.Xeditable(new XeditableOptions
-                {
-                    Pk = item.TournamentId.ToString(),
-                    Value = item.Host?.Name,
-                    Type = XeditableType.Select2
-                })
+           {
+               Pk = item.TournamentId.ToString(),
+               Value = item.Host?.Name,
+               Type = XeditableType.Select2
+           })
             </td>
             <td>
                 @Html.Xeditable(new XeditableOptions
-                {
-                    Pk = item.TournamentId.ToString(),
-                    Value = item.FromDate.Format(),
-                    Type = XeditableType.Text
-                })
+           {
+               Pk = item.TournamentId.ToString(),
+               Value = item.FromDate.Format(),
+               Type = XeditableType.Text
+           })
             </td>
             <td>
                 @Html.Xeditable(new XeditableOptions
-                {
-                    Pk = item.TournamentId.ToString(),
-                    Value = item.ToDate.Format(),
-                    Type = XeditableType.Text
-                })
+           {
+               Pk = item.TournamentId.ToString(),
+               Value = item.ToDate.Format(),
+               Type = XeditableType.Text
+           })
             </td>
             <td>
-                @Ajax.ActionLink("Delete", "Delete", new { @id = item.TournamentId }, new AjaxOptions
-                {
-                    HttpMethod = "GET",
-                    InsertionMode = InsertionMode.Replace,
-                    UpdateTargetId = "tournamentList"
-                })
+                @*@Ajax.ActionLink("Delete", "Delete", new { @id = item.TournamentId }, new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "tournamentList"
+                    })*@
                 @*<a href="@Url.Action("Delete", new { @id = item.TournamentId })"><span class="glyphicon glyphicon-remove-circle"></span></a>*@
+                <button class="btn btn-default" data-toggle="confirmation">Confirmation</button>
+                <button class="btn btn-large btn-primary" data-toggle="confirmation"
+                        data-btn-ok-label="Continue" data-btn-ok-icon="glyphicon glyphicon-share-alt"
+                        data-btn-ok-class="btn-success"
+                        data-btn-cancel-label="Stoooop!" data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
+                        data-btn-cancel-class="btn-danger"
+                        data-title="Is it ok?" data-content="This might be dangerous">
+                    Confirmation
+                </button>
             </td>
         </tr>
     }

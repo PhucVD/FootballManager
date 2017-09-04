@@ -22,6 +22,7 @@ namespace FootballManager.Web
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.js",
+                        "~/Scripts/bootstrap-confirmation.js",
                         "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(

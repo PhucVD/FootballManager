@@ -10,6 +10,7 @@ using FootballManager.Service;
 using FootballManager.Web.Common;
 using FootballManager.Web.Models;
 using FootballManager.Service.Interfaces;
+using FootballManager.Web.Extensions;
 
 namespace FootballManager.Web.Controllers
 {
@@ -55,6 +56,16 @@ namespace FootballManager.Web.Controllers
             }
 
             return Json(new JsonInfo(JsonStatus.Failed), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Update(XeditableOptions editOptions)
+        {
+            if (editOptions == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Bad Request");
+            }
+            int status = _tournamentService.UpdateInfo(editOptions.Pk, editOptions.Name, editOptions.Value);
+            return Json(new JsonInfo(status), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Delete(int? id)

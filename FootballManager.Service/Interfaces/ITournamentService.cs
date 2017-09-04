@@ -13,6 +13,8 @@ namespace FootballManager.Service.Interfaces
 
         void Update(Tournament model);
 
+        int UpdateInfo(string pk, string name, string value);
+
         //void Delete(Tournament model);
 
         void DeleteById(int id);

@@ -13,17 +13,27 @@ namespace FootballManager.Web.Common
 
         public string Exception { get; set; }
 
+        public JsonInfo(int status)
+        {
+            Status = (JsonStatus) status;
+            Message = GetMessage();
+        }
+
         public JsonInfo(JsonStatus status)
         {
             Status = status;
-            Message = status == JsonStatus.Success ? "Save data successfully!" : "Save data failed!";
+            Message = GetMessage();
         }
 
+        private string GetMessage()
+        {
+            return Status == JsonStatus.Success ? "Save data successfully!" : "Save data failed!";
+        }
     }
 
     public enum JsonStatus
     {
         Failed = 0,
-        Success = 1
+        Success = 1,
     }
 }

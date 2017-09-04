@@ -32,9 +32,10 @@ namespace FootballManager.Web.Extensions
             tabBuilder.MergeAttribute("class", "editable editable-click");
             tabBuilder.AddCssClass(options.CssClass);
 
-            tabBuilder.MergeAttribute("data-url", options.Url);
             tabBuilder.MergeAttribute("data-type", options.GetXeditableType());
             tabBuilder.MergeAttribute("data-pk", options.Pk);
+            tabBuilder.MergeAttribute("data-name", options.Name);
+            tabBuilder.MergeAttribute("data-url", options.Url);
             tabBuilder.SetInnerText(options.Value);
             if (htmlAttributes != null)
             {
@@ -60,6 +61,7 @@ namespace FootballManager.Web.Extensions
         public string Url { get; set; }
         public XeditableType Type { get; set; }
         public string Pk { get; set; }
+        public string Name { get; set; }
         public string Value { get; set; }
         public string CssClass { get; set; }
 

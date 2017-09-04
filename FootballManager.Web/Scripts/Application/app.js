@@ -1,6 +1,11 @@
 ﻿$(function() {
     Modal.init();
     XEditable.init();
+
+    $('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+        // other options
+    });
 });
 
 function onSuccessModal(jsonResult) {

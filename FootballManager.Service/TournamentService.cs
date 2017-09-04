@@ -6,6 +6,7 @@ using FootballManager.Domain;
 using FootballManager.Repository.Repositories;
 using FootballManager.Repository.UnitOfWorks;
 using FootballManager.Service.Interfaces;
+using System.Reflection;
 
 namespace FootballManager.Service
 {
@@ -41,10 +42,30 @@ namespace FootballManager.Service
             throw new NotImplementedException();
         }
 
+        public int UpdateInfo(string pk, string name, string value)
+        {
+            var tournament = _tournamentRepository.GetById(int.Parse(pk));
+
+            // Find column which need to be updated
+            var property = tournament.GetType().GetProperties().Where(x => x.Name.Equals(name)).FirstOrDefault();
+            if (property != null)
+            {
+                // Convert type
+                object converted = Convert.ChangeType(value, property.PropertyType);
+                // Set value
+                property.SetValue(tournament, value);
+
+                return this.Save();
+            }
+            
+            return 0;
+        }
+
         public void DeleteById(int id)
         {
             _tournamentRepository.DeleteById(id);
             this.Save();
         }
+
     }
 }
